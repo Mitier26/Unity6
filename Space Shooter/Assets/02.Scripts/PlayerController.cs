@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
 
     public Transform shotPoint;
     public GameObject shotPrefab;
+    
+    public float timeBetweenShots = 0.1f;
+    private float shotCounter;
 
     void Awake()
     {
@@ -35,6 +38,20 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Instantiate(shotPrefab, shotPoint.position, shotPoint.rotation);
+            
+            shotCounter = timeBetweenShots;
+        }
+
+        if (Input.GetButton("Fire1"))
+        {
+            shotCounter -= Time.deltaTime;
+
+            if (shotCounter <= 0)
+            {
+                Instantiate(shotPrefab, shotPoint.position, shotPoint.rotation);
+            
+                shotCounter = timeBetweenShots;
+            }
         }
 
     }

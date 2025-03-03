@@ -932,6 +932,7 @@ MonoBehaviour:
   topRightLimit: {fileID: 319824546}
   shotPoint: {fileID: 282320591}
   shotPrefab: {fileID: 6508200757398861544, guid: ca729caa6122be94898973199937c7a7, type: 3}
+  timeBetweenShots: 0.2
 --- !u!50 &1260370311
 Rigidbody2D:
   serializedVersion: 5
@@ -1265,6 +1266,7 @@ GameObject:
   - component: {fileID: 1572491412}
   - component: {fileID: 1572491411}
   - component: {fileID: 1572491410}
+  - component: {fileID: 1572491413}
   m_Layer: 0
   m_Name: meteor-1
   m_TagString: Untagged
@@ -1372,12 +1374,25 @@ Transform:
   m_GameObject: {fileID: 1572491409}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.66, y: 0, z: 0}
+  m_LocalPosition: {x: 5.66, y: 2.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1572491413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572491409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 997da27997094454da2c2910860d6e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
 --- !u!1 &1595969928
 GameObject:
   m_ObjectHideFlags: 0
