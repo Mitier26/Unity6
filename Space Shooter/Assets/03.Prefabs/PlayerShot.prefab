@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotSpeed: 7
   impactEffect: {fileID: 3844167841295221305, guid: 44b868e367891534a88b8b2370a8bc93, type: 3}
+  effectObject: {fileID: 7697527269449341791, guid: 9419b1a7093de2745b96280ded9a3939, type: 3}
 --- !u!82 &4706937731818672867
 AudioSource:
   m_ObjectHideFlags: 0

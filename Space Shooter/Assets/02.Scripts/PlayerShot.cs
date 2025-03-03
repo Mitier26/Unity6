@@ -5,6 +5,8 @@ public class PlayerShot : MonoBehaviour
     public float shotSpeed = 7f;
     public GameObject impactEffect;
 
+    public GameObject effectObject;
+
     void Update()
     {
         transform.position += new Vector3(shotSpeed * Time.deltaTime, 0, 0);
@@ -14,8 +16,14 @@ public class PlayerShot : MonoBehaviour
     {
         
         Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(gameObject);
+
+        if (other.CompareTag("SpaceObject"))
+        {
+            Instantiate(effectObject, other.transform.position, other.transform.rotation);
+            Destroy(other.gameObject);
+        }
         
+        Destroy(gameObject);
     }
     
     void OnBecameInvisible()
