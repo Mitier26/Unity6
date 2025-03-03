@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerShot : MonoBehaviour
 {
     public float shotSpeed = 7f;
-
+    public GameObject impactEffect;
 
     void Update()
     {
@@ -12,11 +12,10 @@ public class PlayerShot : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy")
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
+        
+        Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
+        
     }
     
     void OnBecameInvisible()
