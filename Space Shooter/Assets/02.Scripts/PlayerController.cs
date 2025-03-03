@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform bottomLeftLimit;
     [SerializeField] Transform topRightLimit;
 
+    public Transform shotPoint;
+    public GameObject shotPrefab;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -28,6 +31,11 @@ public class PlayerController : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, bottomLeftLimit.position.x + transform.localScale.x / 2, topRightLimit.position.x - transform.localScale.x / 2);
         pos.y = Mathf.Clamp(pos.y, bottomLeftLimit.position.y + transform.localScale.y / 2  , topRightLimit.position.y - transform.localScale.y / 2);
         transform.position = pos;
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(shotPrefab, shotPoint.position, shotPoint.rotation);
+        }
 
     }
 }
