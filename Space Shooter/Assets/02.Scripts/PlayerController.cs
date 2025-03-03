@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float timeBetweenShots = 0.1f;
     private float shotCounter;
 
+    public GameObject playerExplosionPrefab;
+    
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -53,6 +56,15 @@ public class PlayerController : MonoBehaviour
                 shotCounter = timeBetweenShots;
             }
         }
+    }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("SpaceObject"))
+        {
+            Destroy(other.gameObject);
+            Instantiate(playerExplosionPrefab, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }
