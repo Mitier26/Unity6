@@ -214,6 +214,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  startDirection: {x: -1, y: 0.25}
+  shouldChangeDirection: 1
+  changeDirectionXPoint: 0
+  changeDirection: {x: -0.5, y: -0.25}
 --- !u!114 &443931030
 MonoBehaviour:
   m_ObjectHideFlags: 0
