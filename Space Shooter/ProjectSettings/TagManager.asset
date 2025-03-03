@@ -47,5 +47,8 @@ TagManager:
   - name: Player
     uniqueID: 2325506579
     locked: 0
+  - name: Space Objects
+    uniqueID: 4169015359
+    locked: 0
   m_RenderingLayers:
   - Default
