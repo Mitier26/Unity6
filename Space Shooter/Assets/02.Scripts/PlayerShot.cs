@@ -22,6 +22,11 @@ public class PlayerShot : MonoBehaviour
             Instantiate(effectObject, other.transform.position, other.transform.rotation);
             Destroy(other.gameObject);
         }
+
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyController>().HurtEnemy();
+        }
         
         Destroy(gameObject);
     }

@@ -19,6 +19,10 @@ public class EnemyController : MonoBehaviour
     public bool canShoot;
     private bool allowShooting;
     
+    public float currentHealth;
+    public GameObject deathEffect;
+    
+    
     private void Start()
     {
         shotCounter = timeBetweenShots;
@@ -50,6 +54,16 @@ public class EnemyController : MonoBehaviour
                 shotCounter = timeBetweenShots;
                 Instantiate(shotToFire, firePoint.position, firePoint.rotation);
             }
+        }
+    }
+
+    public void HurtEnemy()
+    {
+        currentHealth--;
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+            Instantiate(deathEffect, transform.position, transform.rotation);
         }
     }
 
