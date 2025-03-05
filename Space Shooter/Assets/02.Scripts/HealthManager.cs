@@ -35,6 +35,16 @@ public class HealthManager : MonoBehaviour
         {
             Instantiate(deathEffect, transform.position, transform.rotation);
             gameObject.SetActive(false);
+            
+            GameManager.instance.KillPlayer();
+            
+            WaveManager.instance.canSpawnWaves = false;
         }
+    }
+
+    public void Respawn()
+    {
+        gameObject.SetActive(true);
+        currentHealth = maxHealth;
     }
 }

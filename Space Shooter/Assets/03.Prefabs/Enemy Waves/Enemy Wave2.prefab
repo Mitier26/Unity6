@@ -56,6 +56,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2479621523696260139}
     m_Modifications:
+    - target: {fileID: 4608007733918686763, guid: cb1d0bfeac159464082a0ad3667763b4, type: 3}
+      propertyPath: startDirection.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608007733918686763, guid: cb1d0bfeac159464082a0ad3667763b4, type: 3}
+      propertyPath: changeDirectionXPoint
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5743495716509643207, guid: cb1d0bfeac159464082a0ad3667763b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.23
@@ -118,6 +126,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2479621523696260139}
     m_Modifications:
+    - target: {fileID: 4608007733918686763, guid: cb1d0bfeac159464082a0ad3667763b4, type: 3}
+      propertyPath: startDirection.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608007733918686763, guid: cb1d0bfeac159464082a0ad3667763b4, type: 3}
+      propertyPath: changeDirection.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608007733918686763, guid: cb1d0bfeac159464082a0ad3667763b4, type: 3}
+      propertyPath: changeDirectionXPoint
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5743495716509643207, guid: cb1d0bfeac159464082a0ad3667763b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.2299995
@@ -180,6 +200,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2479621523696260139}
     m_Modifications:
+    - target: {fileID: 1018267025905187154, guid: ed4b1c1eb8b747f4c997432b33ed9488, type: 3}
+      propertyPath: startDirection.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018267025905187154, guid: ed4b1c1eb8b747f4c997432b33ed9488, type: 3}
+      propertyPath: changeDirection.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018267025905187154, guid: ed4b1c1eb8b747f4c997432b33ed9488, type: 3}
+      propertyPath: changeDirectionXPoint
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1447588543630357161, guid: ed4b1c1eb8b747f4c997432b33ed9488, type: 3}
       propertyPath: m_Name
       value: Enemy Green (1)
@@ -242,6 +274,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2479621523696260139}
     m_Modifications:
+    - target: {fileID: 1018267025905187154, guid: ed4b1c1eb8b747f4c997432b33ed9488, type: 3}
+      propertyPath: startDirection.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018267025905187154, guid: ed4b1c1eb8b747f4c997432b33ed9488, type: 3}
+      propertyPath: changeDirectionXPoint
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018267025905187154, guid: ed4b1c1eb8b747f4c997432b33ed9488, type: 3}
+      propertyPath: shouldChangeDirection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1447588543630357161, guid: ed4b1c1eb8b747f4c997432b33ed9488, type: 3}
       propertyPath: m_Name
       value: Enemy Green
