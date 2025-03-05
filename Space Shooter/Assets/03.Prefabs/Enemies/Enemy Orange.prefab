@@ -193,13 +193,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  startDirection: {x: -1, y: 0.25}
+  startDirection: {x: -0.75, y: -0.75}
   shouldChangeDirection: 1
   changeDirectionXPoint: 2
-  changeDirection: {x: -0.5, y: -0.25}
+  changeDirection: {x: -0.75, y: -0.75}
   shotToFire: {fileID: 243074725007985707, guid: ead42dabb593b144d86d53a01a3691c6, type: 3}
   firePoint: {fileID: 521609750465298183}
-  timeBetweenShots: 1
+  timeBetweenShots: 1.25
   canShoot: 1
   currentHealth: 3
   deathEffect: {fileID: 5822445055145229609, guid: 374c68f19a609c8488144a229bf937e7, type: 3}

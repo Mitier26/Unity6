@@ -161,15 +161,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c337012f69258f24db3030a4af7fdc6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  startDirection: {x: -1, y: 0.25}
+  moveSpeed: 0
+  startDirection: {x: -1, y: 0}
   shouldChangeDirection: 1
   changeDirectionXPoint: 2
-  changeDirection: {x: -0.5, y: -0.25}
+  changeDirection: {x: -0.5, y: -0.5}
   shotToFire: {fileID: 243074725007985707, guid: ead42dabb593b144d86d53a01a3691c6, type: 3}
   firePoint: {fileID: 2784045782495611537}
   timeBetweenShots: 1
-  canShoot: 1
+  canShoot: 0
   currentHealth: 3
   deathEffect: {fileID: 5822445055145229609, guid: 374c68f19a609c8488144a229bf937e7, type: 3}
 --- !u!1 &1712845188947269218
