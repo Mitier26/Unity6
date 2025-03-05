@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c337012f69258f24db3030a4af7fdc6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 2
   startDirection: {x: -1, y: 0}
   shouldChangeDirection: 1
   changeDirectionXPoint: 2
