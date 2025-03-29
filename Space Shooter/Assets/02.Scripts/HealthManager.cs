@@ -10,6 +10,11 @@ public class HealthManager : MonoBehaviour
     
     public GameObject deathEffect;
 
+    public float invincibleLength;
+    private float invincCounter;
+
+    public SpriteRenderer theSR;
+
     private void Awake()
     {
         if(instance == null)
@@ -27,24 +32,44 @@ public class HealthManager : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    private void Update()
+    {
+        if (invincCounter >= 0)
+        {
+            invincCounter -= Time.deltaTime;
+
+            if (invincCounter <= 0)
+            {
+                theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, 1);
+            }
+        }
+    }
+
     public void HurtPlayer()
     {
-        currentHealth--;
-
-        if (currentHealth <= 0)
+        if (invincCounter <= 0)
         {
-            Instantiate(deathEffect, transform.position, transform.rotation);
-            gameObject.SetActive(false);
+            currentHealth--;
+
+            if (currentHealth <= 0)
+            {
+                Instantiate(deathEffect, transform.position, transform.rotation);
+                gameObject.SetActive(false);
             
-            GameManager.instance.KillPlayer();
+                GameManager.instance.KillPlayer();
             
-            WaveManager.instance.canSpawnWaves = false;
+                WaveManager.instance.canSpawnWaves = false;
+            }
         }
+        
     }
 
     public void Respawn()
     {
         gameObject.SetActive(true);
         currentHealth = maxHealth;
+
+        invincCounter = invincibleLength;
+        theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, 0.5f);
     }
 }
