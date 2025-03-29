@@ -30,6 +30,9 @@ public class HealthManager : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+
+        UIManager.instance.healthBar.maxValue = maxHealth;
+        UIManager.instance.healthBar.value = currentHealth;
     }
 
     private void Update()
@@ -50,6 +53,8 @@ public class HealthManager : MonoBehaviour
         if (invincCounter <= 0)
         {
             currentHealth--;
+            
+            UIManager.instance.healthBar.value = currentHealth;
 
             if (currentHealth <= 0)
             {
@@ -68,6 +73,7 @@ public class HealthManager : MonoBehaviour
     {
         gameObject.SetActive(true);
         currentHealth = maxHealth;
+        UIManager.instance.healthBar.value = currentHealth;
 
         invincCounter = invincibleLength;
         theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, 0.5f);

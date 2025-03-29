@@ -22,9 +22,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        UIManager.instance.livesText.text =  $"X {currentLives}";
+    }
+    
+
     public void KillPlayer()
     {
         currentLives--;
+        UIManager.instance.livesText.text =  $"X {currentLives}";
 
         if ( currentLives > 0)
         {
@@ -32,7 +39,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            
+            UIManager.instance.gameOverScreen.SetActive(true);
+            WaveManager.instance.canSpawnWaves = false;
         }
     }
 
