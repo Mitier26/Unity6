@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI livesText;
 
-    public Slider healthBar;
+    public Slider healthBar, shieldBar;
     
     public TextMeshProUGUI scoreText, highScoreText;
 

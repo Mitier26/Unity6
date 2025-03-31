@@ -15,6 +15,10 @@ public class HealthManager : MonoBehaviour
 
     public SpriteRenderer theSR;
 
+    public int shieldPwr;
+    public int shieldMaxPwr;
+    public GameObject theShield;
+
     private void Awake()
     {
         if(instance == null)
@@ -33,6 +37,11 @@ public class HealthManager : MonoBehaviour
 
         UIManager.instance.healthBar.maxValue = maxHealth;
         UIManager.instance.healthBar.value = currentHealth;
+
+        UIManager.instance.shieldBar.maxValue = shieldMaxPwr;
+        UIManager.instance.shieldBar.value = shieldPwr;
+        
+        ActivateShield();
     }
 
     private void Update()
@@ -52,18 +61,32 @@ public class HealthManager : MonoBehaviour
     {
         if (invincCounter <= 0)
         {
-            currentHealth--;
-            
-            UIManager.instance.healthBar.value = currentHealth;
-
-            if (currentHealth <= 0)
+            if (theShield.activeInHierarchy)
             {
-                Instantiate(deathEffect, transform.position, transform.rotation);
-                gameObject.SetActive(false);
+                shieldPwr--;
+
+                if (shieldPwr <= 0)
+                {
+                    theShield.SetActive(false);
+                }
+                
+                UIManager.instance.shieldBar.value = shieldPwr;
+            }
+            else
+            {
+                currentHealth--;
             
-                GameManager.instance.KillPlayer();
+                UIManager.instance.healthBar.value = currentHealth;
+
+                if (currentHealth <= 0)
+                {
+                    Instantiate(deathEffect, transform.position, transform.rotation);
+                    gameObject.SetActive(false);
             
-                WaveManager.instance.canSpawnWaves = false;
+                    GameManager.instance.KillPlayer();
+            
+                    WaveManager.instance.canSpawnWaves = false;
+                }
             }
         }
         
@@ -77,5 +100,13 @@ public class HealthManager : MonoBehaviour
 
         invincCounter = invincibleLength;
         theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, 0.5f);
+    }
+
+    public void ActivateShield()
+    {
+        theShield.SetActive(true);
+        shieldPwr = shieldMaxPwr;
+        
+        UIManager.instance.shieldBar.value = shieldPwr;
     }
 }
