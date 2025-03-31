@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     
     public TextMeshProUGUI scoreText, highScoreText;
 
+    public GameObject levelEndScreen;
+
     private void Awake()
     {
         instance = this;
