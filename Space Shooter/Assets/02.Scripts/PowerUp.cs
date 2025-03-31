@@ -4,7 +4,7 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     public bool isShield;
-
+    public bool isBoost;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,10 +12,16 @@ public class PowerUp : MonoBehaviour
         {
             Destroy(gameObject);
 
-            if (!isShield)
+            if (isShield)
             {
                 HealthManager.instance.ActivateShield();
             }
+
+            if (isBoost)
+            {
+                PlayerController.instance.ActivateSpeedBoost();
+            }
+            
         }
     }
 }

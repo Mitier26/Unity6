@@ -2194,7 +2194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1169470640
 Transform:
   m_ObjectHideFlags: 0
@@ -2541,6 +2541,8 @@ MonoBehaviour:
   shotPoint: {fileID: 282320591}
   shotPrefab: {fileID: 6508200757398861544, guid: ca729caa6122be94898973199937c7a7, type: 3}
   timeBetweenShots: 0.2
+  boostSpeed: 8
+  boostLength: 5
 --- !u!50 &1260370311
 Rigidbody2D:
   serializedVersion: 5
@@ -3836,6 +3838,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2191525552114718898
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698895924583131960, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+      propertyPath: m_Name
+      value: Boost PowerUp
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3854,3 +3913,4 @@ SceneRoots:
   - {fileID: 1785066103}
   - {fileID: 978210273}
   - {fileID: 1038922571}
+  - {fileID: 2191525552114718898}

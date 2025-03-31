@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+    
     // 2D플레이어 이동 구현
     public float moveSpeed = 5.0f;
     Rigidbody2D rigid;
@@ -15,10 +17,21 @@ public class PlayerController : MonoBehaviour
     
     public float timeBetweenShots = 0.1f;
     private float shotCounter;
+
+    private float normalSpeed;
+    public float boostSpeed;
+    public float boostLength;
+    private float boostCounter;
     
     void Awake()
     {
+        instance = this;
         rigid = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        normalSpeed = moveSpeed;
     }
 
     void Update()
@@ -54,5 +67,20 @@ public class PlayerController : MonoBehaviour
                 shotCounter = timeBetweenShots;
             }
         }
+
+        if (boostCounter > 0)
+        {
+            boostCounter -= Time.deltaTime;
+            if (boostCounter <= 0)
+            {
+                moveSpeed = normalSpeed;
+            }
+        }
+    }
+
+    public void ActivateSpeedBoost()
+    {
+        boostCounter = boostLength;
+        moveSpeed = boostSpeed;
     }
 }
