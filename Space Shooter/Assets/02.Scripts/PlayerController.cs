@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     public bool doubleShotActive;
     public float doubleShotOffset;
+
+    public bool stopMovement;
     
     void Awake()
     {
@@ -39,40 +41,24 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // 플레이어 이동
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-
-        Vector2 dir = new Vector2(x, y);
-        rigid.linearVelocity = dir * moveSpeed;
-
-        // 플레이어 이동 제한
-        Vector2 pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x, bottomLeftLimit.position.x + transform.localScale.x / 2, topRightLimit.position.x - transform.localScale.x / 2);
-        pos.y = Mathf.Clamp(pos.y, bottomLeftLimit.position.y + transform.localScale.y / 2  , topRightLimit.position.y - transform.localScale.y / 2);
-        transform.position = pos;
-
-        if (Input.GetButtonDown("Fire1"))
+        if (!stopMovement)
         {
-            if (!doubleShotActive)
-            {
-                Instantiate(shotPrefab, shotPoint.position, shotPoint.rotation);
-            }
-            else
-            {
-                Instantiate(shotPrefab, shotPoint.position + new Vector3(0f, doubleShotOffset, 0f), shotPoint.rotation);
-                Instantiate(shotPrefab, shotPoint.position - new Vector3(0f, doubleShotOffset, 0f), shotPoint.rotation);
-            }
-            
-            
-            shotCounter = timeBetweenShots;
-        }
+            // 플레이어 이동
+            float x = Input.GetAxis("Horizontal");
+            float y = Input.GetAxis("Vertical");
 
-        if (Input.GetButton("Fire1"))
-        {
-            shotCounter -= Time.deltaTime;
+            Vector2 dir = new Vector2(x, y);
+            rigid.linearVelocity = dir * moveSpeed;
 
-            if (shotCounter <= 0)
+            // 플레이어 이동 제한
+            Vector2 pos = transform.position;
+            pos.x = Mathf.Clamp(pos.x, bottomLeftLimit.position.x + transform.localScale.x / 2,
+                topRightLimit.position.x - transform.localScale.x / 2);
+            pos.y = Mathf.Clamp(pos.y, bottomLeftLimit.position.y + transform.localScale.y / 2,
+                topRightLimit.position.y - transform.localScale.y / 2);
+            transform.position = pos;
+
+            if (Input.GetButtonDown("Fire1"))
             {
                 if (!doubleShotActive)
                 {
@@ -80,22 +66,51 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    Instantiate(shotPrefab, shotPoint.position + new Vector3(0f, doubleShotOffset, 0f), shotPoint.rotation);
-                    Instantiate(shotPrefab, shotPoint.position - new Vector3(0f, doubleShotOffset, 0f), shotPoint.rotation);
+                    Instantiate(shotPrefab, shotPoint.position + new Vector3(0f, doubleShotOffset, 0f),
+                        shotPoint.rotation);
+                    Instantiate(shotPrefab, shotPoint.position - new Vector3(0f, doubleShotOffset, 0f),
+                        shotPoint.rotation);
                 }
-            
-            
+
+
                 shotCounter = timeBetweenShots;
             }
-        }
 
-        if (boostCounter > 0)
-        {
-            boostCounter -= Time.deltaTime;
-            if (boostCounter <= 0)
+            if (Input.GetButton("Fire1"))
             {
-                moveSpeed = normalSpeed;
+                shotCounter -= Time.deltaTime;
+
+                if (shotCounter <= 0)
+                {
+                    if (!doubleShotActive)
+                    {
+                        Instantiate(shotPrefab, shotPoint.position, shotPoint.rotation);
+                    }
+                    else
+                    {
+                        Instantiate(shotPrefab, shotPoint.position + new Vector3(0f, doubleShotOffset, 0f),
+                            shotPoint.rotation);
+                        Instantiate(shotPrefab, shotPoint.position - new Vector3(0f, doubleShotOffset, 0f),
+                            shotPoint.rotation);
+                    }
+
+
+                    shotCounter = timeBetweenShots;
+                }
             }
+
+            if (boostCounter > 0)
+            {
+                boostCounter -= Time.deltaTime;
+                if (boostCounter <= 0)
+                {
+                    moveSpeed = normalSpeed;
+                }
+            }
+        }
+        else
+        {
+            rigid.linearVelocity = Vector2.zero;
         }
     }
 

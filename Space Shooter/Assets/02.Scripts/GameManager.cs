@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public int currentScore;
     public int highScore = 500;
+
+    public bool levelEnding;
     
     private void Awake()
     {
@@ -35,7 +37,15 @@ public class GameManager : MonoBehaviour
         
         UIManager.instance.scoreText.text = "HI-Score: " + highScore;
     }
-    
+
+    private void Update()
+    {
+        if (levelEnding)
+        {
+            PlayerController.instance.transform.position +=
+                new Vector3(PlayerController.instance.boostSpeed * Time.deltaTime, 0f, 0f);
+        }
+    }
 
     public void KillPlayer()
     {
@@ -81,6 +91,12 @@ public class GameManager : MonoBehaviour
     public IEnumerator EndLevelCo()
     {
         UIManager.instance.levelEndScreen.SetActive(true);
+
+        PlayerController.instance.stopMovement = true;
+
+        levelEnding = true;
+        MusicController.instance.PlayVictory();
+        
         yield return new WaitForSeconds(0.5f);
     }
     
