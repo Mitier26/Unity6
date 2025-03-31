@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2826927875441897605}
   - component: {fileID: 2761907557877669780}
   - component: {fileID: 1448704854299444861}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Boost PowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShield: 0
   isBoost: 1
+  isDoubleShot: 0
 --- !u!114 &1448704854299444861
 MonoBehaviour:
   m_ObjectHideFlags: 0

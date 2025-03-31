@@ -2543,6 +2543,8 @@ MonoBehaviour:
   timeBetweenShots: 0.2
   boostSpeed: 8
   boostLength: 5
+  doubleShotActive: 0
+  doubleShotOffset: 0.2
 --- !u!50 &1260370311
 Rigidbody2D:
   serializedVersion: 5

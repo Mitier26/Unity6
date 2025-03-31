@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3497787551608787945}
   - component: {fileID: 2871092902387914550}
   - component: {fileID: 1588874761664510878}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DoubleShot PowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

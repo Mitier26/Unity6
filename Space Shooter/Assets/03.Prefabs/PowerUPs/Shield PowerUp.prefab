@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1565080936145742406}
   - component: {fileID: 1099558275132717963}
   - component: {fileID: 4037855839586641123}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shield PowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShield: 1
   isBoost: 0
+  isDoubleShot: 0
 --- !u!114 &4037855839586641123
 MonoBehaviour:
   m_ObjectHideFlags: 0

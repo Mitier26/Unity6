@@ -172,6 +172,11 @@ MonoBehaviour:
   canShoot: 1
   currentHealth: 3
   deathEffect: {fileID: 0}
+  scoreValue: 100
+  powerUps:
+  - {fileID: 7698895924583131960, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+  - {fileID: 1650962608292633777, guid: c3a5200db5733b648b7335752c52087c, type: 3}
+  - {fileID: 4775651444310796939, guid: 4c7e592279e09164493e87566c460316, type: 3}
 --- !u!1 &8138443651775783976
 GameObject:
   m_ObjectHideFlags: 0

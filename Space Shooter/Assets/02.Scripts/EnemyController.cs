@@ -1,5 +1,7 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyController : MonoBehaviour
 {
@@ -23,7 +25,9 @@ public class EnemyController : MonoBehaviour
     public GameObject deathEffect;
 
     public int scoreValue = 100;
-    
+
+    public GameObject[] powerUps;
+    public int dropSuccessRate = 15;
     
     private void Start()
     {
@@ -65,6 +69,15 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0)
         {
             GameManager.instance.AddScore(scoreValue);
+
+            int randomChance = Random.Range(0, 100);
+            
+            if (randomChance < dropSuccessRate)
+            {
+                int randomPick = Random.Range(0, powerUps.Length);
+
+                Instantiate(powerUps[randomPick], transform.position, quaternion.identity);
+            }
             
             Destroy(gameObject);
             Instantiate(deathEffect, transform.position, transform.rotation);
