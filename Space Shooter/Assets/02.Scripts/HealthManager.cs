@@ -85,6 +85,8 @@ public class HealthManager : MonoBehaviour
                     GameManager.instance.KillPlayer();
             
                     WaveManager.instance.canSpawnWaves = false;
+
+                    PlayerController.instance.doubleShotActive = false;
                 }
             }
         }

@@ -3838,7 +3838,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2191525552114718898
+--- !u!1001 &121105242404321845
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -3846,55 +3846,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+    - target: {fileID: 1650962608292633777, guid: c3a5200db5733b648b7335752c52087c, type: 3}
+      propertyPath: m_Name
+      value: DoubleShot PowerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721112414282092902, guid: c3a5200db5733b648b7335752c52087c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+    - target: {fileID: 5721112414282092902, guid: c3a5200db5733b648b7335752c52087c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+    - target: {fileID: 5721112414282092902, guid: c3a5200db5733b648b7335752c52087c, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+    - target: {fileID: 5721112414282092902, guid: c3a5200db5733b648b7335752c52087c, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+    - target: {fileID: 5721112414282092902, guid: c3a5200db5733b648b7335752c52087c, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+    - target: {fileID: 5721112414282092902, guid: c3a5200db5733b648b7335752c52087c, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+    - target: {fileID: 5721112414282092902, guid: c3a5200db5733b648b7335752c52087c, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+    - target: {fileID: 5721112414282092902, guid: c3a5200db5733b648b7335752c52087c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+    - target: {fileID: 5721112414282092902, guid: c3a5200db5733b648b7335752c52087c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6567559335471698805, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+    - target: {fileID: 5721112414282092902, guid: c3a5200db5733b648b7335752c52087c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7698895924583131960, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
-      propertyPath: m_Name
-      value: Boost PowerUp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 032d07b3aa1b18341a34f0b53c0e312a, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: c3a5200db5733b648b7335752c52087c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3913,4 +3913,4 @@ SceneRoots:
   - {fileID: 1785066103}
   - {fileID: 978210273}
   - {fileID: 1038922571}
-  - {fileID: 2191525552114718898}
+  - {fileID: 121105242404321845}

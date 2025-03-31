@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     public float boostSpeed;
     public float boostLength;
     private float boostCounter;
+
+    public bool doubleShotActive;
+    public float doubleShotOffset;
     
     void Awake()
     {
@@ -51,7 +54,16 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(shotPrefab, shotPoint.position, shotPoint.rotation);
+            if (!doubleShotActive)
+            {
+                Instantiate(shotPrefab, shotPoint.position, shotPoint.rotation);
+            }
+            else
+            {
+                Instantiate(shotPrefab, shotPoint.position + new Vector3(0f, doubleShotOffset, 0f), shotPoint.rotation);
+                Instantiate(shotPrefab, shotPoint.position - new Vector3(0f, doubleShotOffset, 0f), shotPoint.rotation);
+            }
+            
             
             shotCounter = timeBetweenShots;
         }
@@ -62,7 +74,16 @@ public class PlayerController : MonoBehaviour
 
             if (shotCounter <= 0)
             {
-                Instantiate(shotPrefab, shotPoint.position, shotPoint.rotation);
+                if (!doubleShotActive)
+                {
+                    Instantiate(shotPrefab, shotPoint.position, shotPoint.rotation);
+                }
+                else
+                {
+                    Instantiate(shotPrefab, shotPoint.position + new Vector3(0f, doubleShotOffset, 0f), shotPoint.rotation);
+                    Instantiate(shotPrefab, shotPoint.position - new Vector3(0f, doubleShotOffset, 0f), shotPoint.rotation);
+                }
+            
             
                 shotCounter = timeBetweenShots;
             }

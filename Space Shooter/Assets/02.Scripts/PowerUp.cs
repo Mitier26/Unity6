@@ -5,6 +5,7 @@ public class PowerUp : MonoBehaviour
 {
     public bool isShield;
     public bool isBoost;
+    public bool isDoubleShot;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,6 +21,11 @@ public class PowerUp : MonoBehaviour
             if (isBoost)
             {
                 PlayerController.instance.ActivateSpeedBoost();
+            }
+
+            if (isDoubleShot)
+            {
+                PlayerController.instance.doubleShotActive = true;
             }
             
         }
