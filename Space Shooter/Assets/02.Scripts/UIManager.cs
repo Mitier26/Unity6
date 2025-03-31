@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI livesText;
 
     public Slider healthBar;
+    
+    public TextMeshProUGUI scoreText, highScoreText;
 
     private void Awake()
     {

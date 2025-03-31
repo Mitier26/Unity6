@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
     
     public float currentHealth;
     public GameObject deathEffect;
+
+    public int scoreValue = 100;
     
     
     private void Start()
@@ -62,6 +64,8 @@ public class EnemyController : MonoBehaviour
         currentHealth--;
         if (currentHealth <= 0)
         {
+            GameManager.instance.AddScore(scoreValue);
+            
             Destroy(gameObject);
             Instantiate(deathEffect, transform.position, transform.rotation);
         }
