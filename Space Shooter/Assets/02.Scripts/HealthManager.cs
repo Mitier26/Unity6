@@ -41,7 +41,6 @@ public class HealthManager : MonoBehaviour
         UIManager.instance.shieldBar.maxValue = shieldMaxPwr;
         UIManager.instance.shieldBar.value = shieldPwr;
         
-        ActivateShield();
     }
 
     private void Update()
