@@ -29,6 +29,11 @@ public class PlayerShot : MonoBehaviour
         {
             other.GetComponent<EnemyController>().HurtEnemy();
         }
+
+        if (other.CompareTag("Boss"))
+        {
+            BossManager.instance.HurtBoss();
+        }
         
         Destroy(gameObject);
     }

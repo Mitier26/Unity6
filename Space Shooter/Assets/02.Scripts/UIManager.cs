@@ -25,6 +25,9 @@ public class UIManager : MonoBehaviour
 
     public string mainMenuName = "MainMenu";
 
+    public Slider bossSlider;
+    public TextMeshProUGUI bossName;
+
     private void Awake()
     {
         instance = this;
