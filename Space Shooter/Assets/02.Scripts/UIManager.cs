@@ -18,6 +18,13 @@ public class UIManager : MonoBehaviour
 
     public GameObject levelEndScreen;
 
+    public TextMeshProUGUI endLevelScore, endCurrentScore;
+    public GameObject highScoreNotice;
+
+    public GameObject pauseScreen;
+
+    public string mainMenuName = "MainMenu";
+
     private void Awake()
     {
         instance = this;
@@ -26,10 +33,17 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 
     public void QuitToMain()
     {
-        
+        SceneManager.LoadScene(mainMenuName);
+        Time.timeScale = 1f;
+    }
+
+    public void Resume()
+    {
+        GameManager.instance.PauseUnpause();
     }
 }
