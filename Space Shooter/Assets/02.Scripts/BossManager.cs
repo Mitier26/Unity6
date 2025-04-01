@@ -8,7 +8,11 @@ public class BossManager : MonoBehaviour
     public string bossName;
     public int currentHealth = 100;
 
-    public BattleShot[] shotsToFire;
+    // public BattleShot[] shotsToFire;
+
+    public BattlePhase[] phases;
+    public int currentPhase;
+    public Animator bossAnim;
     
     private void Awake()
     {
@@ -27,14 +31,27 @@ public class BossManager : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < shotsToFire.Length; i++)
-        {
-            shotsToFire[i].shotCounter -= Time.deltaTime;
+        
 
-            if (shotsToFire[i].shotCounter <= 0)
+        if (currentHealth <= phases[currentPhase].healthToEndPhase)
+        {
+            phases[currentPhase].removeAtPhaseEnd.SetActive(false);
+            Instantiate(phases[currentPhase].addAtPhaseEnd, phases[currentPhase].newSpawnPoint.position, phases[currentPhase].newSpawnPoint.rotation);
+            currentPhase++;
+            
+            bossAnim.SetInteger("Phase",2);
+        }
+        else
+        {
+            for (int i = 0; i < phases[currentPhase].phaseShots.Length; i++)
             {
-                shotsToFire[i].shotCounter = shotsToFire[i].timeBetweenShots;
-                Instantiate(shotsToFire[i].theShot, shotsToFire[i].firePoint.position, shotsToFire[i].firePoint.rotation);
+                phases[currentPhase].phaseShots[i].shotCounter -= Time.deltaTime;
+            
+                if (phases[currentPhase].phaseShots[i].shotCounter <= 0)
+                {
+                    phases[currentPhase].phaseShots[i].shotCounter = phases[currentPhase].phaseShots[i].timeBetweenShots;
+                    Instantiate(phases[currentPhase].phaseShots[i].theShot, phases[currentPhase].phaseShots[i].firePoint.position, phases[currentPhase].phaseShots[i].firePoint.rotation);
+                }
             }
         }
     }
@@ -52,11 +69,21 @@ public class BossManager : MonoBehaviour
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class BattleShot
 {
     public GameObject theShot;
     public float timeBetweenShots;
     public float shotCounter;
     public Transform firePoint;
+}
+
+[Serializable]
+public class BattlePhase
+{
+    public BattleShot[] phaseShots;
+    public int healthToEndPhase;
+    public GameObject removeAtPhaseEnd;
+    public GameObject addAtPhaseEnd;
+    public Transform newSpawnPoint;
 }

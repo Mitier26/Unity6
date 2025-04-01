@@ -333,16 +333,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossName: SquidTron 3000
-  currentHealth: 100
-  shotsToFire:
-  - theShot: {fileID: 243074725007985707, guid: 48eef7c85cb39cf48866c21a993c2b53, type: 3}
-    timeBetweenShots: 1
-    shotCounter: 0.5
-    firePoint: {fileID: 181871913}
-  - theShot: {fileID: 243074725007985707, guid: 48eef7c85cb39cf48866c21a993c2b53, type: 3}
-    timeBetweenShots: 1
-    shotCounter: 0
-    firePoint: {fileID: 1100551149}
+  currentHealth: 10
+  phases:
+  - phaseShots:
+    - theShot: {fileID: 243074725007985707, guid: 48eef7c85cb39cf48866c21a993c2b53, type: 3}
+      timeBetweenShots: 1
+      shotCounter: 0.5
+      firePoint: {fileID: 181871913}
+    - theShot: {fileID: 243074725007985707, guid: 48eef7c85cb39cf48866c21a993c2b53, type: 3}
+      timeBetweenShots: 1
+      shotCounter: 0
+      firePoint: {fileID: 1100551149}
+    healthToEndPhase: 5
+    removeAtPhaseEnd: {fileID: 1291489503}
+    addAtPhaseEnd: {fileID: 7697527269449341791, guid: 9419b1a7093de2745b96280ded9a3939, type: 3}
+    newSpawnPoint: {fileID: 1291489504}
+  - phaseShots:
+    - theShot: {fileID: 243074725007985707, guid: 48eef7c85cb39cf48866c21a993c2b53, type: 3}
+      timeBetweenShots: 0.75
+      shotCounter: 0.375
+      firePoint: {fileID: 181871913}
+    - theShot: {fileID: 243074725007985707, guid: 48eef7c85cb39cf48866c21a993c2b53, type: 3}
+      timeBetweenShots: 0.75
+      shotCounter: 0
+      firePoint: {fileID: 1100551149}
+    healthToEndPhase: 0
+    removeAtPhaseEnd: {fileID: 0}
+    addAtPhaseEnd: {fileID: 0}
+    newSpawnPoint: {fileID: 0}
+  currentPhase: 0
+  bossAnim: {fileID: 0}
 --- !u!1001 &780383173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -422,6 +442,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 990887913722054573, guid: 9cbd61669a34a0041b7c6008c1fef1fc, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290298473454458760, guid: 9cbd61669a34a0041b7c6008c1fef1fc, type: 3}
+      propertyPath: canSpawnWaves
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7704140688077580381, guid: 9cbd61669a34a0041b7c6008c1fef1fc, type: 3}
@@ -663,11 +687,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2730863533376639099, guid: e6df6ebdb06b09e4184cf38dee50ce50, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2730863533376639099, guid: e6df6ebdb06b09e4184cf38dee50ce50, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4824670148033806328, guid: e6df6ebdb06b09e4184cf38dee50ce50, type: 3}
       propertyPath: m_Pivot.x
@@ -755,6 +779,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6203726307777950996, guid: e6df6ebdb06b09e4184cf38dee50ce50, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6313626727748568490, guid: e6df6ebdb06b09e4184cf38dee50ce50, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
