@@ -176,6 +176,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aa6d2fc7d322f74398ac78911dfcc31, type: 3}
+--- !u!1 &181871912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 181871913}
+  m_Layer: 0
+  m_Name: FirePoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &181871913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181871912}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5, y: 1.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1402646190}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &451995687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -301,7 +332,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de7de9498760be448fbc366fb56dc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossName: SquidTron 3000
   currentHealth: 100
+  shotsToFire:
+  - theShot: {fileID: 243074725007985707, guid: 48eef7c85cb39cf48866c21a993c2b53, type: 3}
+    timeBetweenShots: 1
+    shotCounter: 0.5
+    firePoint: {fileID: 181871913}
+  - theShot: {fileID: 243074725007985707, guid: 48eef7c85cb39cf48866c21a993c2b53, type: 3}
+    timeBetweenShots: 1
+    shotCounter: 0
+    firePoint: {fileID: 1100551149}
 --- !u!1001 &780383173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -485,6 +526,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2a2bd7fecbdfa0429969a484d33bd89, type: 3}
+--- !u!1 &1100551148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1100551149}
+  m_Layer: 0
+  m_Name: FirePoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1100551149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100551148}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5, y: -1.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1402646190}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1213212238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3749679081955043920, guid: adba87f7f553f8c499cd9b55ee9cd472, type: 3}
@@ -722,6 +794,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1291489504}
+  - {fileID: 181871913}
+  - {fileID: 1100551149}
   m_Father: {fileID: 499066290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1402646191
