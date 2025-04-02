@@ -4,7 +4,7 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour
 {
     public static MapGenerator instance;
-
+    
     public GameObject 
         roadPrefab, 
         grass_Prefab, 
