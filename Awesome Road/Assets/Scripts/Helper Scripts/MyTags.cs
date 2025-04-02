@@ -3,7 +3,7 @@ using UnityEngine;
 public class MyTags : MonoBehaviour
 {
     public static string ROAD = "Road";
-    public static string TOP_NEAR_GRESS = "TopNearGrass";
+    public static string TOP_NEAR_GRASS = "TopNearGrass";
     public static string TOP_FAR_GRASS = "TopFarGrass";
     public static string BOTTOM_NEAR_GRASS = "BottomNearGrass";
     public static string BOTTOM_FAR_LAND_1 = "BottomFarLand1";
