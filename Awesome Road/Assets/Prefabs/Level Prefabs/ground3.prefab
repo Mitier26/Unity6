@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6398838764779084798}
   - component: {fileID: 168425639802167372}
+  - component: {fileID: 2749422224048483477}
   m_Layer: 0
   m_Name: ground3
   m_TagString: TopFarGrass
@@ -87,3 +88,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2749422224048483477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719030509684067504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c72f199565e3dc468ee844c71e757bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
