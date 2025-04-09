@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2407431690406934309}
   - component: {fileID: 5385296695123309840}
   - component: {fileID: 3221423974155732645}
+  - component: {fileID: 2072188777909623065}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1642495027
   m_SortingLayer: 6
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7303491007126703121, guid: d79af01417e4c444da607528b77b0572, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -158,6 +159,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2072188777909623065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248651502411902584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c64562fbb5160d49893f6493baafe7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5420418839512096309
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 656858268536956298}
   - component: {fileID: 7990540028422216461}
+  - component: {fileID: 4774718122037512262}
   m_Layer: 0
   m_Name: Root Player
   m_TagString: Untagged
@@ -305,3 +319,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4774718122037512262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7381240639955287445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99e33a56e981bf4ea83e991006ea21f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1248651502411902584}
+  shadow: {fileID: 5420418839512096309}
+  firstPosOfPlayer: {x: -4.78, y: 1.93, z: 1}
+  second_PosOfPlayer: {x: -3.3, y: 2.93, z: 1}
+  player_Died: 0
+  player_Jumped: 0

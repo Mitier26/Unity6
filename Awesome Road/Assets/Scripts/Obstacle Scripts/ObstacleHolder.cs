@@ -17,6 +17,8 @@ public class ObstacleHolder : MonoBehaviour
 
         if (transform.localPosition.x <= limitAxisX)
         {
+            GameplayController.instance.obstacles_Is_Active = false;
+            
             gameObject.SetActive(false);
         }
     }

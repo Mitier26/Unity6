@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameplayController : MonoBehaviour
 {
@@ -8,6 +11,13 @@ public class GameplayController : MonoBehaviour
     public float moveSpeed, distance_Factor = 1f;
     private float distance_Move;
     private bool gameJustStarted;
+
+    public GameObject obstacle_Obj;
+    public GameObject[] obstacle_List;
+
+    [HideInInspector] public bool obstacles_Is_Active;
+    
+    private string Coroutine_Name = "SpawnObstacles";
     
     void Awake()
     {
@@ -18,6 +28,9 @@ public class GameplayController : MonoBehaviour
     {
         mainCam = Camera.main;
         gameJustStarted = true;
+        
+        GetObstacles();
+        StartCoroutine(Coroutine_Name);
     }
     
     void Update()
@@ -75,6 +88,45 @@ public class GameplayController : MonoBehaviour
         else if (round >= 60f)
         {
             moveSpeed = 16f;
+        }
+    }
+
+    void GetObstacles()
+    {
+        obstacle_List = new GameObject[obstacle_Obj.transform.childCount];
+
+        for (int i = 0; i < obstacle_List.Length; i++)
+        {
+            obstacle_List[i] = obstacle_Obj.GetComponentsInChildren<ObstacleHolder>(true)[i].gameObject;
+        }
+        
+    }
+
+    IEnumerator SpawnObstacles()
+    {
+        while (true)
+        {
+            if (!PlayerController.instance.player_Died)
+            {
+                if (!obstacles_Is_Active)
+                {
+                    if (Random.value <= 0.85f)
+                    {
+                        int randomIndex = 0;
+
+                        do
+                        {
+                            randomIndex = Random.Range(0, obstacle_List.Length);
+                        } while (obstacle_List[randomIndex].activeInHierarchy);
+                        
+                        obstacle_List[randomIndex].SetActive(true);
+                        obstacles_Is_Active = true;
+
+                    }
+                }
+            }
+            
+            yield return new WaitForSeconds(0.6f);
         }
     }
 }
