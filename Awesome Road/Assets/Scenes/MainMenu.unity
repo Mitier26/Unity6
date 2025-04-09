@@ -134,7 +134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &100465258
 RectTransform:
   m_ObjectHideFlags: 0
@@ -157,6 +157,84 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &204028596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204028598}
+  - component: {fileID: 204028597}
+  - component: {fileID: 204028599}
+  m_Layer: 0
+  m_Name: MainMenu Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &204028597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204028596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae31fed8c47f6014993be7cc357c0729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hero_Menu: {fileID: 100465257}
+  starScoreText: {fileID: 534859677}
+  music_Img: {fileID: 2020407365}
+  music_Off: {fileID: 21300000, guid: c33642f356fc1e448a6fc944c12ecf8d, type: 3}
+  music_On: {fileID: 21300000, guid: a42fc888cbcf54b4eb53b60bc343a1ba, type: 3}
+--- !u!4 &204028598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204028596}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &204028599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204028596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c66625b0fa27d5469c7f9c944ee424a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  available_Heros:
+  - {fileID: 1629242373}
+  - {fileID: 455927894}
+  - {fileID: 1345625586}
+  - {fileID: 1169812543}
+  - {fileID: 1562701251}
+  - {fileID: 1966591134}
+  - {fileID: 282114331}
+  - {fileID: 1094399959}
+  - {fileID: 1800961151}
+  selectedText: {fileID: 1136954060}
+  starIcon: {fileID: 496015233}
+  selectBtn_Image: {fileID: 900984655}
+  button_Green: {fileID: 21300000, guid: 1018f8c1d99abed4b95dcc6754f80a31, type: 3}
+  button_Blue: {fileID: 21300000, guid: dbdfd7d2ba8380a469a1612c99d55887, type: 3}
+  starScoreText: {fileID: 534859677}
 --- !u!1 &204285418
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +583,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 362320970}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 204028597}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: HomeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &362320970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,7 +1226,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 691154353}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 204028597}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: HeroMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &691154353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1331,7 +1433,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 799227405}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 204028599}
+        m_TargetAssemblyTypeName: CharacterSelectScript, Assembly-CSharp
+        m_MethodName: NextHero
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &799227405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1928,7 +2042,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 26}
+  m_AnchoredPosition: {x: 0, y: 25.999996}
   m_SizeDelta: {x: 80, y: 113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1178582168
@@ -2129,7 +2243,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1300363405}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 204028597}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: PlayGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1300363405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2957,7 +3083,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1760605834}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 204028599}
+        m_TargetAssemblyTypeName: CharacterSelectScript, Assembly-CSharp
+        m_MethodName: PreviousHero
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1760605834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3278,7 +3416,7 @@ GameObject:
   - component: {fileID: 2020407365}
   - component: {fileID: 2020407364}
   m_Layer: 5
-  m_Name: Musinc Button
+  m_Name: Music Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3740,3 +3878,4 @@ SceneRoots:
   - {fileID: 2058216941}
   - {fileID: 380485431}
   - {fileID: 1216125063}
+  - {fileID: 204028598}
