@@ -13,7 +13,7 @@ public class MyTags : MonoBehaviour
     public static string BOTTOM_FAR_LAND_5 = "BottomFarLand5";
     public static string OBSTACLE = "Obstacle";
     public static string STAR = "Star";
-    public static string STAR_EFFECT = "StarEffect";
+    public static string STAR_EFFECT = "Star Effect";
     public static string OB_TOP = "ObTop";
     public static string OB_BOTTOM = "ObBottom";
     public static string OB_MIDDLE = "ObMiddle";
