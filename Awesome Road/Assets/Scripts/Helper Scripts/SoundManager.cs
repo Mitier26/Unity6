@@ -17,7 +17,14 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        
+        if(GameManager.instance.playSound)
+        {
+            background_Audio_Source.Play();
+        }
+        else
+        {
+            background_Audio_Source.Stop();
+        }
     }
 
     void MakeInstance()

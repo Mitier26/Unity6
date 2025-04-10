@@ -44,6 +44,13 @@ public class PlayerController : MonoBehaviour
         star_Effect = GameObject.FindGameObjectsWithTag(MyTags.STAR_EFFECT);
     }
 
+    private void Start()
+    {
+        string path = "Sprites/Player/hero" + GameManager.instance.selected_Index + "_big";
+        player_Sprite = Resources.Load<Sprite>(path);
+        player_Renderer.sprite = player_Sprite;
+    }
+
     private void Update()
     {
         HandleChangeLine();
