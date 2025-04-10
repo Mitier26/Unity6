@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         shadow.SetActive(false);
 
         GameplayController.instance.moveSpeed = 0f;
-        // GameplayController.instance.GameOver();
+        GameplayController.instance.GameOver();
         
         SoundManager.instance.PlayDeadSound();
         SoundManager.instance.PlayGameOverClip();
@@ -180,6 +180,7 @@ public class PlayerController : MonoBehaviour
             }
             target.gameObject.SetActive(false);
             SoundManager.instance.PlayCoinSound();
+            GameplayController.instance.UpdateStarScore();
         }
     }
 }
