@@ -71,7 +71,14 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "34e76d6dfd5143c7835f4068a7be276c"
+        },
+        {
+            "m_Id": "2964e062287f4618924c68f14afffe83"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -325,10 +332,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -979.333251953125,
-            "y": 360.6666564941406,
+            "x": -897.9999389648438,
+            "y": 196.66664123535157,
             "width": 129.33331298828126,
-            "height": 102.6666259765625
+            "height": 102.66667175292969
         }
     },
     "m_Slots": [
@@ -492,6 +499,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "2964e062287f4618924c68f14afffe83",
+    "m_Title": "변화량",
+    "m_Content": "Offset의 값이 변하면서 그림이 움직이게 된다.\nX의 값만 받게 만듬",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -768.6666870117188,
+        "y": -36.66666793823242,
+        "width": 265.3333435058594,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "2e7c27be735d4423a517f5fed0e62d8e",
     "m_Id": 0,
@@ -609,6 +636,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "34e76d6dfd5143c7835f4068a7be276c",
+    "m_Title": "시간을 느리게",
+    "m_Content": "Write something here",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1132.0,
+        "y": 96.0,
+        "width": 200.0,
+        "height": 109.86181640625
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "3b50ab35b6924e09a8e38dea2fe7882f",
     "m_Id": 5,
@@ -634,10 +681,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1397.3333740234375,
-            "y": 311.3333435058594,
-            "width": 125.33349609375,
-            "height": 174.66665649414063
+            "x": -1316.0,
+            "y": 147.3333282470703,
+            "width": 125.3333740234375,
+            "height": 174.6666717529297
         }
     },
     "m_Slots": [
@@ -1030,10 +1077,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -468.6666259765625,
-            "y": 406.66668701171877,
-            "width": 209.3333740234375,
-            "height": 438.6666259765625
+            "x": -468.6667175292969,
+            "y": 338.6667175292969,
+            "width": 209.33334350585938,
+            "height": 438.6666564941406
         }
     },
     "m_Slots": [
@@ -1592,10 +1639,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -823.333251953125,
-            "y": 199.99998474121095,
+            "x": -741.9999389648438,
+            "y": 36.000022888183597,
             "width": 209.33331298828126,
-            "height": 327.99993896484377
+            "height": 327.9999694824219
         }
     },
     "m_Slots": [
@@ -1650,9 +1697,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -637.333251953125,
-            "y": 423.9999694824219,
-            "width": 148.6666259765625,
+            "x": -640.666748046875,
+            "y": 379.3333435058594,
+            "width": 148.66668701171876,
             "height": 36.000030517578128
         }
     },
@@ -1764,10 +1811,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1218.66650390625,
-            "y": 311.3333435058594,
-            "width": 209.33331298828126,
-            "height": 304.0000305175781
+            "x": -1137.3333740234375,
+            "y": 147.3333282470703,
+            "width": 209.3333740234375,
+            "height": 304.0
         }
     },
     "m_Slots": [
