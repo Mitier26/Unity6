@@ -14,15 +14,6 @@
         },
         {
             "m_Id": "95e9c4bb6c0f46a4b481ce6ad2228e18"
-        },
-        {
-            "m_Id": "59d52ed9c07147b48af7e9fb0c80dcac"
-        },
-        {
-            "m_Id": "f042654ad25c499f9418bbf9a0454634"
-        },
-        {
-            "m_Id": "241a0db02fde4c1ba4fc6882456daffc"
         }
     ],
     "m_Keywords": [],
@@ -381,34 +372,6 @@
 }
 
 {
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "241a0db02fde4c1ba4fc6882456daffc",
-    "m_Guid": {
-        "m_GuidSerialized": "17d0c7be-b8af-4742-a917-9ddb463254e4"
-    },
-    "m_Name": "EnableOutline",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "EnableOutline",
-    "m_DefaultReferenceName": "_EnableOutline",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 0.0,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.UVMaterialSlot",
     "m_ObjectId": "25576ff453cf4f6ea4e4d2e8e88cf4cd",
@@ -713,34 +676,6 @@
 }
 
 {
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "59d52ed9c07147b48af7e9fb0c80dcac",
-    "m_Guid": {
-        "m_GuidSerialized": "ea500beb-f40e-4d84-b098-223f48ac6903"
-    },
-    "m_Name": "OutlineWidth",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "OutlineWidth",
-    "m_DefaultReferenceName": "_OutlineWidth",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 0.30000001192092898,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "5c916365dd0041a0aca39abdc74e43cc",
@@ -987,15 +922,6 @@
         },
         {
             "m_Id": "d326bee5a65c4e229627db836c79b536"
-        },
-        {
-            "m_Id": "59d52ed9c07147b48af7e9fb0c80dcac"
-        },
-        {
-            "m_Id": "f042654ad25c499f9418bbf9a0454634"
-        },
-        {
-            "m_Id": "241a0db02fde4c1ba4fc6882456daffc"
         }
     ]
 }
@@ -1735,36 +1661,6 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
-}
-
-{
-    "m_SGVersion": 3,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
-    "m_ObjectId": "f042654ad25c499f9418bbf9a0454634",
-    "m_Guid": {
-        "m_GuidSerialized": "2dad5cb8-7cf5-4151-adcd-2c5e66872604"
-    },
-    "m_Name": "OutlineColor",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "OutlineColor",
-    "m_DefaultReferenceName": "_OutlineColor",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "r": 0.0,
-        "g": 0.0,
-        "b": 0.0,
-        "a": 1.0
-    },
-    "isMainColor": false,
-    "m_ColorMode": 0
 }
 
 {

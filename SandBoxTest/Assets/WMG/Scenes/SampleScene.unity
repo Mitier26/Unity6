@@ -1234,7 +1234,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: b6d18349b247d354b8024d732a230c8e, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ecd8214abe98944f960fd342357a4ac, type: 2}
     - target: {fileID: 919132149155446097, guid: a396cfd9474cb6f4d8e20909a6592a8b,
         type: 3}
       propertyPath: m_Name
@@ -1494,7 +1494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96ced9470b1ad5f46a555e00bf2fef01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineRenderer: {fileID: 0}
+  outlineRenderer: {fileID: 200439027}
   info: {fileID: 1572562905}
 --- !u!114 &1572562904
 MonoBehaviour:
