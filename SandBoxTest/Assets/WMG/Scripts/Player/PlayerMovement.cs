@@ -38,8 +38,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (ObjectInspector.Instance != null && ObjectInspector.Instance.IsInspecting)
+        if (ObjectInspector.Instance?.IsInspecting == true || PuzzleManager.Instance?.IsCutsceneActive == true)
+        {
             return;
+        }
         
         moveInput = moveAction.action.ReadValue<Vector2>();
         lookInput = lookAction.action.ReadValue<Vector2>();

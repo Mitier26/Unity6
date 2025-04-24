@@ -33,6 +33,9 @@ public class PlayerInteractor : MonoBehaviour
 
     private void HandleDetection()
     {
+        if (PuzzleManager.Instance?.IsCutsceneActive == true)
+            return;
+        
         if (ObjectInspector.Instance != null && ObjectInspector.Instance.IsInspecting)
             return;
         

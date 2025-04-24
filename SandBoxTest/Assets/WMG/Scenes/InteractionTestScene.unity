@@ -164,9 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35151042808aae54fb18d938bdf0a20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHint: 0
-  isImportant: 1
-  isDanger: 0
 --- !u!114 &120346899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b5602e4ceb4774f9802fe1bb82f240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineRenderer: {fileID: 120346904}
 --- !u!114 &120346900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b44faf0bc378a408e8398821d1ab54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetRenderer: {fileID: 120346904}
 --- !u!114 &120346901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,13 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cf5b337650ede4f80c4a4a4c88d735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableType: 1
-  isHint: 0
-  objectName: "\uC0C1\uD638\uC791\uC6A9 \uBB3C\uCCB4"
-  description: "\uC0C1\uD638 \uC791\uC6A9\uC774 \uAC00\uB2A5\uD55C \uC624\uBE0C\uC81D\uD2B8\nE
-    \uD0A4\uB97C \uB204\uB974\uBA74 \uC0C1\uD638 \uC791\uC6A9\uD55C\uB2E4."
-  showLabel: 1
-  showInteractionMessage: 1
 --- !u!114 &120346902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,9 +683,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35151042808aae54fb18d938bdf0a20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHint: 0
-  isImportant: 0
-  isDanger: 0
 --- !u!114 &1599942317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,7 +695,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b5602e4ceb4774f9802fe1bb82f240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineRenderer: {fileID: 1599942322}
 --- !u!114 &1599942318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b44faf0bc378a408e8398821d1ab54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetRenderer: {fileID: 1599942322}
 --- !u!114 &1599942319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,13 +719,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cf5b337650ede4f80c4a4a4c88d735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableType: 2
-  isHint: 1
-  objectName: "\uC218\uC9D1 \uC544\uC774\uD15C"
-  description: "\uC0C1\uD638 \uC791\uC6A9\uD558\uBA74 \uC624\uBE0C\uC81D\uD2B8 \uD655\uB300\uB418\uACE0\n\uC624\uBE0C\uC81D\uD2B8\uAC00
-    \uC778\uBCA4\uD1A0\uB9AC\uB85C \uB4E4\uC5B4 \uAC04\uB2E4."
-  showLabel: 1
-  showInteractionMessage: 1
 --- !u!114 &1599942320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,6 +820,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1873792295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1873792296}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1873792296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873792295}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1932148444
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,9 +887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35151042808aae54fb18d938bdf0a20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHint: 0
-  isImportant: 0
-  isDanger: 1
 --- !u!114 &1932148446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -895,7 +899,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b5602e4ceb4774f9802fe1bb82f240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineRenderer: {fileID: 1932148451}
 --- !u!114 &1932148447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -908,7 +911,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b44faf0bc378a408e8398821d1ab54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetRenderer: {fileID: 1932148451}
 --- !u!114 &1932148448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,13 +923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cf5b337650ede4f80c4a4a4c88d735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableType: 0
-  isHint: 0
-  objectName: "\uD14D\uC2A4\uD2B8\uB9CC \uC788\uB294 \uBB3C\uCCB4"
-  description: "\uC0C1\uD638\uC791\uC6A9\uC744 \uD560 \uC218 \uC5C6\uACE0 <shake>\uC774\uB984\uACFC
-    \uC124\uBA85</shake>\uB9CC \uBCFC \uC218 \uC788\uB2E4."
-  showLabel: 1
-  showInteractionMessage: 0
 --- !u!114 &1932148449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1299,3 +1294,4 @@ SceneRoots:
   - {fileID: 1599942324}
   - {fileID: 8308177275853713791}
   - {fileID: 796297357509517712}
+  - {fileID: 1873792296}

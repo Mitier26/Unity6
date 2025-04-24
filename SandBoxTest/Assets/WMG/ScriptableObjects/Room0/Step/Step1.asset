@@ -19,7 +19,7 @@ MonoBehaviour:
   triggerType: 0
   requiredObject: {fileID: 0}
   hintTargetObject: {fileID: 0}
-  bottomDialogueText: 
+  bottomDialogueText: "\uC5B4\uC11C\uC624\uC138\uC694, \uC774\uCABD\uC73C\uB85C \uC624\uC2DC\uACA0\uC5B4\uC694"
   topLeftMessageText: 
   timeline: {fileID: 0}
   waitForTimelineEnd: 0
