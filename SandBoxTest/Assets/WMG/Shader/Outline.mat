@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Outline
-  m_Shader: {fileID: -6465566751694194690, guid: 2e6d0ef38984e6945a064023033efdf4,
+  m_Shader: {fileID: -6465566751694194690, guid: fc402969752fae5408008ca93617999b,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -117,6 +117,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _OutlineThickness: 0.05
     - _Outline_Thickness: 0.05
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -138,6 +139,7 @@ Material:
     - _BlinkColor: {r: 0.8867924, g: 0.85349345, b: 0.22030364, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _Outline_Color: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _WaveColor1: {r: 0, g: 0, b: 0, a: 0}

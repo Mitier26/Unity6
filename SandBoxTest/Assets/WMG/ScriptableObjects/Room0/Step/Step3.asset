@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249377b4fb837284bb702d973bedd531, type: 3}
+  m_Name: Step3
+  m_EditorClassIdentifier: 
+  stepID: 3
+  stepName: "\uC0C1\uC790 \uD68D\uB4DD"
+  description: "\uC624\uBE0C\uC81D\uD2B8\uC640 \uC0C1\uD638 \uC791\uC6A9\uD558\uB294
+    \uBC29\uBC95\uC744 \uBC30\uC6B4\uB2E4."
+  triggerType: 0
+  requiredObject: {fileID: 0}
+  hintTargetObject: {fileID: 0}
+  bottomDialogueText: 
+  topLeftMessageText: 
+  timeline: {fileID: 0}
+  waitForTimelineEnd: 0
+  autoAdvanceDelay: 2
