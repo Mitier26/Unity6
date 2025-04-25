@@ -44,6 +44,7 @@ public class PuzzleStepSO : ScriptableObject
     [Tooltip("이 스텝에서 실행할 Timeline 자산")]
     public TimelineAsset timeline;
 
+    [Header("다음 단계")]
     [Tooltip("타임라인이 끝난 후에만 다음 단계로 진행할지 여부")]
     public bool waitForTimelineEnd;
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class PuzzleManager : MonoBehaviour
     
     public GameObject leftTopMessagePanel;                  // 왼쪽 상단 메시지 UI
     public TextMeshProUGUI leftTopMessageText;              // 왼쪽 상단 메시지 텍스트
+
+    public GameObject crosshair;
+    
+    [Header("연출용")]
+    public PlayableDirector director;
 
     public PuzzleStepSO CurrentStep => puzzleFlow.steps[currentStepIndex];
 
@@ -55,9 +61,30 @@ public class PuzzleManager : MonoBehaviour
     private void TriggerStep(PuzzleStepSO step)
     {
         Debug.Log("현재 스텝: " + step.stepName);
-        // 힌트 하이라이트
-        // 메시지 출력
-        // Timeline 실행 등 처리
+
+        // 하단 대사 출력
+        if (!string.IsNullOrEmpty(step.bottomDialogueText))
+            ShowBottomDialogue(step.bottomDialogueText);
+    
+        // 상단 메시지 출력
+        if (!string.IsNullOrEmpty(step.topLeftMessageText))
+            ShowLeftTopMessage(step.topLeftMessageText);
+
+        // 타임라인 연출
+        if (step.timeline != null && director != null)
+        {
+            BeginCutscene();
+            director.Play(step.timeline);
+
+            if (!step.waitForTimelineEnd)
+            {
+                StartCoroutine(AutoAdvanceAfter(step.autoAdvanceDelay));
+            }
+        }
+        else if (step.triggerType == StepTriggerType.Auto)
+        {
+            StartCoroutine(AutoAdvanceAfter(step.autoAdvanceDelay));
+        }
     }
 
     // 테스트용
@@ -84,6 +111,7 @@ public class PuzzleManager : MonoBehaviour
         isCutsceneActive = active;
         Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = active;
+        crosshair.SetActive(!active);
     }
     
     public void ShowBottomDialogue(string message)
@@ -116,4 +144,16 @@ public class PuzzleManager : MonoBehaviour
         }
     }
     
+    private IEnumerator AutoAdvanceAfter(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        EndCutscene(); 
+        AdvanceStep();
+    }
+    
+    public void OnTimelineEnded()
+    {
+        EndCutscene(); // 조작 가능하게
+        AdvanceStep(); // 퍼즐 진행
+    }
 }

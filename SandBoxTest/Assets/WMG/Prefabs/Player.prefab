@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7314942386024686818}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,8 +172,8 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 64
-  uiController: {fileID: 0}
-  labelUI: {fileID: 0}
+  crosshairUIController: {fileID: 0}
+  worldLabelUI: {fileID: 0}
   interactionPromptUI: {fileID: 0}
 --- !u!114 &7314942386024686818
 MonoBehaviour:
@@ -193,7 +193,7 @@ MonoBehaviour:
   zoomSpeed: 0.5
   minScale: 1
   maxScale: 2
-  labelUI: {fileID: 0}
+  worldLabelUI: {fileID: 0}
   interactionUI: {fileID: 0}
   crosshairUI: {fileID: 0}
 --- !u!1 &8963010863888003471
