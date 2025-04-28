@@ -19,6 +19,7 @@ MonoBehaviour:
   requiredObject: {fileID: 0}
   hintTargetObject: {fileID: 0}
   bottomDialogueText: 
+  bottomDialogues: []
   topLeftMessageText: 
   timeline: {fileID: 0}
   waitForTimelineEnd: 0

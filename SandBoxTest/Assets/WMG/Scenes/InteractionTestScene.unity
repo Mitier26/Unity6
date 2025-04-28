@@ -164,6 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35151042808aae54fb18d938bdf0a20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHint: 0
+  isImportant: 1
+  isDanger: 0
 --- !u!114 &120346899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b5602e4ceb4774f9802fe1bb82f240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineRenderer: {fileID: 0}
 --- !u!114 &120346900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b44faf0bc378a408e8398821d1ab54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 0}
 --- !u!114 &120346901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +205,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cf5b337650ede4f80c4a4a4c88d735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableType: 1
+  isHint: 0
+  objectName: "\uC774\uB984 \uC5C6\uB294 \uBB3C\uCCB4"
+  description: "\uC124\uBA85\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."
+  showLabel: 1
+  showInteractionMessage: 1
 --- !u!114 &120346902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,6 +694,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35151042808aae54fb18d938bdf0a20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHint: 0
+  isImportant: 0
+  isDanger: 1
 --- !u!114 &1599942317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,6 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b5602e4ceb4774f9802fe1bb82f240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineRenderer: {fileID: 0}
 --- !u!114 &1599942318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,6 +722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b44faf0bc378a408e8398821d1ab54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 0}
 --- !u!114 &1599942319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,6 +735,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cf5b337650ede4f80c4a4a4c88d735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableType: 3
+  isHint: 0
+  objectName: "\uC774\uB984 \uC5C6\uB294 \uBB3C\uCCB4"
+  description: "\uC124\uBA85\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."
+  showLabel: 1
+  showInteractionMessage: 1
 --- !u!114 &1599942320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,6 +909,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35151042808aae54fb18d938bdf0a20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHint: 0
+  isImportant: 0
+  isDanger: 0
 --- !u!114 &1932148446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -899,6 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b5602e4ceb4774f9802fe1bb82f240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineRenderer: {fileID: 0}
 --- !u!114 &1932148447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,6 +937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b44faf0bc378a408e8398821d1ab54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 0}
 --- !u!114 &1932148448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,6 +950,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cf5b337650ede4f80c4a4a4c88d735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableType: 0
+  isHint: 0
+  objectName: "\uC774\uB984 \uC5C6\uB294 \uBB3C\uCCB4"
+  description: "\uC124\uBA85\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."
+  showLabel: 1
+  showInteractionMessage: 1
 --- !u!114 &1932148449
 MonoBehaviour:
   m_ObjectHideFlags: 0

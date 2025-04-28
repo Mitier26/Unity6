@@ -16,11 +16,16 @@ MonoBehaviour:
   stepName: "\uC758\uC0AC \uC778\uC0AC"
   description: "\uC774\uAC83\uC740 \uAC1C\uBC1C\uC790 or \uB514\uC790\uC774\uB108\uB97C
     \uC704\uD55C \uC124\uBA85 \uACF5\uAC04"
-  triggerType: 2
+  triggerType: 1
   requiredObject: {fileID: 0}
   hintTargetObject: {fileID: 0}
-  bottomDialogueText: "\uC5B4\uC11C\uC624\uC138\uC694, \uC774\uCABD\uC73C\uB85C \uC624\uC2DC\uACA0\uC5B4\uC694"
+  bottomDialogueText: "\uC548\uB155\uD558\uC138\uC694. \uC774\uCABD\uC73C\uB85C \uC624\uC138\uC694."
+  bottomDialogues:
+  - "\uC548\uB155\uD558\uC138\uC694. \uC774\uCABD\uC73C\uB85C \uC624\uC138\uC694.2"
+  - 123123123
+  - "\u3141\u3134\u3147\u313B\u3134\u3147\u313B\u3134\u3147\u3139"
+  - "\u31412\u31473\u31393\u3147\u31473\u314E3\u314E"
   topLeftMessageText: 
-  timeline: {fileID: 0}
+  timeline: {fileID: 11400000, guid: 68fef810170b87e44a00462dfcefafe7, type: 2}
   waitForTimelineEnd: 0
   autoAdvanceDelay: 2

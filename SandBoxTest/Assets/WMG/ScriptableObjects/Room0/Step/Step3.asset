@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Step3
   m_EditorClassIdentifier: 
   stepID: 3
-  stepName: "\uC0C1\uC790 \uD68D\uB4DD"
+  stepName: "\uC0C1\uC790 \uC124\uBA85"
   description: "\uC624\uBE0C\uC81D\uD2B8\uC640 \uC0C1\uD638 \uC791\uC6A9\uD558\uB294
     \uBC29\uBC95\uC744 \uBC30\uC6B4\uB2E4."
   triggerType: 0
   requiredObject: {fileID: 0}
   hintTargetObject: {fileID: 0}
   bottomDialogueText: 
+  bottomDialogues: []
   topLeftMessageText: 
   timeline: {fileID: 0}
   waitForTimelineEnd: 0

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -36,6 +37,10 @@ public class PuzzleStepSO : ScriptableObject
     [Header("UI 출력")]
     [Tooltip("하단 중앙에 출력할 대사 텍스트")]
     public string bottomDialogueText;
+    
+    [Header("UI 출력")]
+    [Tooltip("하단 중앙에 순차적으로 출력할 대사 리스트")]
+    public List<string> bottomDialogues = new List<string>();
 
     [Tooltip("왼쪽 상단에 출력할 짧은 메시지")]
     public string topLeftMessageText;
