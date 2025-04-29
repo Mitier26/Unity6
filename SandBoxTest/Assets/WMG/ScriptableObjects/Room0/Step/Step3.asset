@@ -13,15 +13,20 @@ MonoBehaviour:
   m_Name: Step3
   m_EditorClassIdentifier: 
   stepID: 3
-  stepName: "\uC0C1\uC790 \uC124\uBA85"
-  description: "\uC624\uBE0C\uC81D\uD2B8\uC640 \uC0C1\uD638 \uC791\uC6A9\uD558\uB294
-    \uBC29\uBC95\uC744 \uBC30\uC6B4\uB2E4."
+  stepName: "\uC0C1\uC790 \uCC3E\uAE30"
+  description: "\uD50C\uB808\uC774\uC5B4 \uC704\uCE58\uB97C \uC9C0\uC815\uD55C\uB2E4.
+    \uC0C1\uC790 \uCC3E\uAE30 \uC124\uBA85\uD55C\uB2E4."
   triggerType: 0
   requiredObject: {fileID: 0}
   hintTargetObject: {fileID: 0}
   bottomDialogueText: 
-  bottomDialogues: []
+  bottomDialogues:
+  - 111111111111111111111111
+  - 2222222222222222222
+  - 333333333333333333
+  - 44444444444444444
+  - "\uC0C1\uC790 \uC548\uC5D0 \uC788\uB294 \uAC83\uC774 \uD544\uC694"
   topLeftMessageText: 
-  timeline: {fileID: 0}
-  waitForTimelineEnd: 0
+  timeline: {fileID: 11400000, guid: 2788c0bff6029044f96bf4989a99ece1, type: 2}
+  waitForTimelineEnd: 1
   autoAdvanceDelay: 2

@@ -19,8 +19,7 @@ public class PuzzleStepSO : ScriptableObject
 
     [Tooltip("이 스텝의 이름 (예: 의사 인사, 상자 획득 등)")]
     public string stepName;
-
-    [Tooltip("개발자용 설명. 이 스텝이 무엇을 의미하는지 간단히 작성")]
+    
     [TextArea]
     public string description;
 

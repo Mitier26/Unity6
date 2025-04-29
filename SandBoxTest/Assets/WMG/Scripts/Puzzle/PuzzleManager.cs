@@ -120,6 +120,7 @@ public class PuzzleManager : MonoBehaviour
             nextDialogueUI.SetActive(false);
         }
         bottomDialoguePanel.SetActive(false);
+        bottomDialogueText.text = string.Empty;
         ResumeTimelineAfterDialogue();
     }
 

@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Step4
   m_EditorClassIdentifier: 
   stepID: 4
-  stepName: "\uC0C1\uC790 \uCC3E\uAE30"
+  stepName: "\uC0C1\uC790 \uCC3E\uAE303"
   description: "\uC0C1\uC790\uB97C \uCC3E\uC544\uB77C."
-  triggerType: 3
+  triggerType: 1
   requiredObject: {fileID: 0}
   hintTargetObject: {fileID: 0}
   bottomDialogueText: 
-  topLeftMessageText: "\uC0C1\uC790\uB97C \uAE30\uC9C0\uACE0 \uC624\uC138\uC694"
+  bottomDialogues: []
+  topLeftMessageText: 
   timeline: {fileID: 0}
   waitForTimelineEnd: 0
   autoAdvanceDelay: 2

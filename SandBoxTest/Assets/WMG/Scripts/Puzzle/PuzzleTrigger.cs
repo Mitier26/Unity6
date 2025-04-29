@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PuzzleTrigger : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PuzzleTrigger : MonoBehaviour
         if (isTriggered) return; // 중복 방지
         if (other.CompareTag("Player") == false) return;
 
+        
+        Debug.Log("트리거 엔터");
         var step = PuzzleManager.Instance.CurrentStep;
         if (step.triggerType == StepTriggerType.PlayerInArea)
         {
@@ -41,7 +44,7 @@ public class PuzzleTrigger : MonoBehaviour
 
         // 3. 페이드 인
         yield return fade.FadeIn();
-
+        
         // 4. 이동이 끝난 후 AdvanceStep
         PuzzleManager.Instance.AdvanceStep();
     }
