@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (ObjectInspector.Instance?.IsInspecting == true || PuzzleManager.Instance?.IsCutsceneActive == true)
+        if (ObjectInspector.Instance?.IsInspecting == true || PuzzleManager.Instance?.IsCutsceneActive == true || PanelManager.Instance?.IsUiOpened == true)
         {
             return;
         }

@@ -12,6 +12,7 @@ public class ObjectInspector : MonoBehaviour
     [Header("검사 모드 설정")]
     public float moveDuration = 0.5f;
     public float rotateSpeed = 200f;
+    public float scaleMultiply = 0.3f;
     
     [Header("확대/축소 설정")]
     public float zoomSpeed = 0.5f;
@@ -102,6 +103,7 @@ public class ObjectInspector : MonoBehaviour
         target.transform.SetParent(inspectPivot);
         target.transform.DOLocalMove(Vector3.zero, moveDuration).SetEase(Ease.OutQuad);
         target.transform.DOLocalRotate(Vector3.zero, moveDuration).SetEase(Ease.OutQuad);
+        target.transform.DOScale(target.transform.localScale * scaleMultiply, moveDuration).SetEase(Ease.OutQuad);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

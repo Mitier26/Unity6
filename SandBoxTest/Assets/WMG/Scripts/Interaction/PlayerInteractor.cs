@@ -129,16 +129,37 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (currentTarget != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            var info = (currentTarget as MonoBehaviour)?.GetComponent<InteractableInfo>();
+            var mono = currentTarget as MonoBehaviour;
+            var info = mono?.GetComponent<InteractableInfo>();
 
-            if (info != null)
+            if (info == null)
+                return;
+
+            if (info.interactableType == InteractableType.DescriptionOnlyObject)
+                return;
+
+            // 🔥 상호작용 실행 (CollectibleObject도 여기서 처리)
+            currentTarget.Interact();
+
+            // 🔧 효과 정리 (공통)
+            if (lastHighlight != null)
             {
-                if (info.interactableType == InteractableType.DescriptionOnlyObject)
-                    return;
+                lastHighlight.DisableHighlight();
+                lastHighlight = null;
             }
 
-            currentTarget.Interact();
+            if (lastOutline != null)
+            {
+                lastOutline.DisableOutline();
+                lastOutline = null;
+            }
+
+            currentTarget = null;
+            interactionPromptUI.Hide();
+            worldLabelUI.ClearTarget();
+            crosshairUIController.SetState(false);
         }
     }
+
     
 }

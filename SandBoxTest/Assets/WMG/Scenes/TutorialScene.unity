@@ -1125,6 +1125,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1513406539886815127, guid: 43a42b761db805e47b74059c16cf5508,
+        type: 3}
+      propertyPath: m_text
+      value: "<bounce a=0.2>\uD074\uB9AD\uD558\uC138\uC694</bounce>"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951324628063845647, guid: 43a42b761db805e47b74059c16cf5508,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8051144601987664126, guid: 43a42b761db805e47b74059c16cf5508,
         type: 3}
       propertyPath: m_Name
