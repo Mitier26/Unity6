@@ -4,67 +4,71 @@ using UnityEngine.InputSystem.Users;
 
 namespace Tanks.Complete
 {
-    //Ensure it run before the TankShooting component as TankShooting grabs the InputUser from this when there are no
-    //GameManager set (used during learning experience to test tank in empty scenes)
+    // TankShooting보다 먼저 실행되도록 설정합니다. TankShooting은 GameManager가 설정되지 않은 경우 이 컴포넌트에서 InputUser를 가져옵니다.
+    // (학습용 테스트 장면에서 탱크를 단독으로 테스트할 때 사용됩니다)
     [DefaultExecutionOrder(-10)]
     public class TankMovement : MonoBehaviour
     {
-        [Tooltip("The player number. Without a tank selection menu, Player 1 is left keyboard control, Player 2 is right keyboard")]
-        public int m_PlayerNumber = 1;              // Used to identify which tank belongs to which player.  This is set by this tank's manager.
-        [Tooltip("The speed in unity unit/second the tank move at")]
-        public float m_Speed = 12f;                 // How fast the tank moves forward and back.
-        [Tooltip("The speed in deg/s that tank will rotate at")]
-        public float m_TurnSpeed = 180f;            // How fast the tank turns in degrees per second.
-        [Tooltip("If set to true, the tank auto orient and move toward the pressed direction instead of rotating on left/right and move forward on up")]
-        public bool m_IsDirectControl;
-        public AudioSource m_MovementAudio;         // Reference to the audio source used to play engine sounds. NB: different to the shooting audio source.
-        public AudioClip m_EngineIdling;            // Audio to play when the tank isn't moving.
-        public AudioClip m_EngineDriving;           // Audio to play when the tank is moving.
-		public float m_PitchRange = 0.2f;           // The amount by which the pitch of the engine noises can vary.
-        [Tooltip("Is set to true this will be controlled by the computer and not a player")]
-        public bool m_IsComputerControlled = false; // Is this tank player or computer controlled
-        [HideInInspector]
-        public TankInputUser m_InputUser;            // The Input User component for that tanks. Contains the Input Actions.
-        
-        public Rigidbody Rigidbody => m_Rigidbody;
-        
-        public int ControlIndex { get; set; } = -1; //this define the index of the control 1 = left keyboard or pad, 2 = right keyboard, -1 = no control
-        
-        private string m_MovementAxisName;          // The name of the input axis for moving forward and back.
-        private string m_TurnAxisName;              // The name of the input axis for turning.
-        private Rigidbody m_Rigidbody;              // Reference used to move the tank.
-        private float m_MovementInputValue;         // The current value of the movement input.
-        private float m_TurnInputValue;             // The current value of the turn input.
-        private float m_OriginalPitch;              // The pitch of the audio source at the start of the scene.
-        private ParticleSystem[] m_particleSystems; // References to all the particles systems used by the Tanks
-        
-        private InputAction m_MoveAction;             // The InputAction used to move, retrieved from TankInputUser
-        private InputAction m_TurnAction;             // The InputAction used to shot, retrieved from TankInputUser
+        [Tooltip("플레이어 번호. 탱크 선택 메뉴가 없을 경우, Player 1은 왼쪽 키보드, Player 2는 오른쪽 키보드를 사용합니다")]
+        public int m_PlayerNumber = 1; // 이 탱크가 어떤 플레이어에 속하는지 식별하는 데 사용됩니다. 탱크 매니저에서 설정됩니다.
 
-        private Vector3 m_RequestedDirection;       // In Direct Control mode, store the direction the user *wants* to go toward
-        
-        private void Awake ()
+        [Tooltip("탱크가 이동하는 속도 (유닛/초)")]
+        public float m_Speed = 12f; // 앞으로 또는 뒤로 이동하는 속도입니다.
+
+        [Tooltip("탱크가 회전하는 속도 (도/초)")]
+        public float m_TurnSpeed = 180f; // 초당 회전하는 속도입니다.
+
+        [Tooltip("true로 설정 시, 좌우 회전이 아닌 눌린 방향으로 직접 회전하며 이동합니다")]
+        public bool m_IsDirectControl;
+
+        public AudioSource m_MovementAudio; // 엔진 소리를 재생하는 오디오 소스입니다. 사격용 오디오 소스와는 다릅니다.
+        public AudioClip m_EngineIdling; // 탱크가 정지 상태일 때 재생되는 오디오 클립입니다.
+        public AudioClip m_EngineDriving; // 탱크가 이동 중일 때 재생되는 오디오 클립입니다.
+        public float m_PitchRange = 0.2f; // 엔진 사운드의 피치가 바뀌는 범위입니다.
+
+        [Tooltip("true로 설정 시, 이 탱크는 플레이어가 아니라 컴퓨터가 제어합니다")]
+        public bool m_IsComputerControlled = false; // 이 탱크가 AI에 의해 제어되는지 여부입니다.
+
+        [HideInInspector]
+        public TankInputUser m_InputUser; // 이 탱크의 Input User 컴포넌트입니다. Input Actions를 포함합니다.
+
+        public Rigidbody Rigidbody => m_Rigidbody; // 외부에서 Rigidbody에 접근할 수 있게 프로퍼티 제공
+
+        public int ControlIndex { get; set; } = -1; // 컨트롤 인덱스를 정의합니다. 1 = 왼쪽 키보드/패드, 2 = 오른쪽 키보드, -1 = 제어 없음
+
+        private string m_MovementAxisName; // 전진 및 후진 입력 축 이름
+        private string m_TurnAxisName; // 회전 입력 축 이름
+        private Rigidbody m_Rigidbody; // 탱크를 이동시키기 위해 사용하는 Rigidbody 참조
+        private float m_MovementInputValue; // 현재 전진/후진 입력 값
+        private float m_TurnInputValue; // 현재 회전 입력 값
+        private float m_OriginalPitch; // 장면 시작 시 오디오 소스의 피치
+        private ParticleSystem[] m_particleSystems; // 탱크에 사용되는 파티클 시스템들의 참조
+
+        private InputAction m_MoveAction; // 이동에 사용되는 InputAction입니다. TankInputUser에서 가져옵니다.
+        private InputAction m_TurnAction; // 회전에 사용되는 InputAction입니다. TankInputUser에서 가져옵니다.
+
+        private Vector3 m_RequestedDirection; // Direct Control 모드일 때, 사용자가 원하는 방향을 저장합니다
+
+        private void Awake()
         {
-            m_Rigidbody = GetComponent<Rigidbody> ();
-            
+            m_Rigidbody = GetComponent<Rigidbody>();
+
+            // TankInputUser 컴포넌트가 없으면 추가합니다.
             m_InputUser = GetComponent<TankInputUser>();
             if (m_InputUser == null)
                 m_InputUser = gameObject.AddComponent<TankInputUser>();
         }
 
-
-        private void OnEnable ()
+        private void OnEnable()
         {
-            // Computer controlled tank are kinematic
+            // 탱크가 다시 활성화되었을 때, 물리 연산을 적용하기 위해 kinematic 비활성화
             m_Rigidbody.isKinematic = false;
 
-            // Also reset the input values.
+            // 입력 초기화
             m_MovementInputValue = 0f;
             m_TurnInputValue = 0f;
 
-            // We grab all the Particle systems child of that Tank to be able to Stop/Play them on Deactivate/Activate
-            // It is needed because we move the Tank when spawning it, and if the Particle System is playing while we do that
-            // it "think" it move from (0,0,0) to the spawn point, creating a huge trail of smoke
+            // 파티클 시스템을 재생하여 위치 변화 시 흔적이 남지 않도록 함
             m_particleSystems = GetComponentsInChildren<ParticleSystem>();
             for (int i = 0; i < m_particleSystems.Length; ++i)
             {
@@ -72,49 +76,39 @@ namespace Tanks.Complete
             }
         }
 
-
-        private void OnDisable ()
+        private void OnDisable()
         {
-            // When the tank is turned off, set it to kinematic so it stops moving.
+            // 물리 연산을 멈추기 위해 kinematic 활성화
             m_Rigidbody.isKinematic = true;
 
-            // Stop all particle system so it "reset" it's position to the actual one instead of thinking we moved when spawning
-            for(int i = 0; i < m_particleSystems.Length; ++i)
+            // 파티클 시스템 중지 (스폰 이동 중 잔상 방지)
+            for (int i = 0; i < m_particleSystems.Length; ++i)
             {
                 m_particleSystems[i].Stop();
             }
         }
 
-
-        private void Start ()
+        private void Start()
         {
-            // If this is computer controlled...
+            // AI 제어가 필요한 경우 TankAI 컴포넌트가 없으면 추가합니다.
             if (m_IsComputerControlled)
             {
-                // but it doesn't have an AI component...
                 var ai = GetComponent<TankAI>();
                 if (ai == null)
                 {
-                    // we add it, to ensure this will control the tank.
-                    // This is only useful when user test tank in empty scene, otherwise the TankManager ensure 
-                    // computer controlled tank are setup properly
                     gameObject.AddComponent<TankAI>();
                 }
             }
 
-            // If no control index was set, this mean this is a scene without a GameManager and that tank was manually
-            // added to an empty scene, so we used the manually set Player Number in the Inspector as the ControlIndex,
-            // so Player 1 will be ControlIndex 1 -> KeyboardLeft and Player 2 -> KeyboardRight
+            // ControlIndex가 설정되지 않았다면 PlayerNumber를 기반으로 지정합니다.
             if (ControlIndex == -1 && !m_IsComputerControlled)
             {
                 ControlIndex = m_PlayerNumber;
             }
-            
+
             var mobileControl = FindAnyObjectByType<MobileUIControl>();
-            
-            // By default, ControlIndex 1 is matched to KeyboardLeft. But if there is a mobile UI control component in the scene
-            // and it is active (so we either are on mobile or it was force activated to test by the user) then we instead 
-            // match ControlIndex 1 to the virtual Gamepad on screen.
+
+            // 모바일 환경이거나 모바일 테스트 시, 가상 게임패드 장치를 연결합니다.
             if (mobileControl != null && ControlIndex == 1)
             {
                 m_InputUser.SetNewInputUser(InputUser.PerformPairingWithDevice(mobileControl.Device));
@@ -122,61 +116,54 @@ namespace Tanks.Complete
             }
             else
             {
-                // otherwise if no mobile ui control is active, ControlIndex is KeyboardLeft scheme and ControlIndex 2 is KeyboardRight
+                // 키보드 왼쪽/오른쪽 스킴을 설정합니다.
                 m_InputUser.ActivateScheme(ControlIndex == 1 ? "KeyboardLeft" : "KeyboardRight");
             }
 
-            // The axes names are based on player number.
             m_MovementAxisName = "Vertical";
             m_TurnAxisName = "Horizontal";
-            
-            // Get the action input from the TankInputUser component which will have taken care of copying them and
-            // binding them to the right device and control scheme
+
+            // TankInputUser로부터 액션을 찾고 활성화합니다.
             m_MoveAction = m_InputUser.ActionAsset.FindAction(m_MovementAxisName);
             m_TurnAction = m_InputUser.ActionAsset.FindAction(m_TurnAxisName);
-            
-            // actions need to be enabled before they can react to input
+
             m_MoveAction.Enable();
             m_TurnAction.Enable();
-            
-            // Store the original pitch of the audio source.
+
+            // 원래의 엔진 사운드 피치를 저장해둡니다.
             m_OriginalPitch = m_MovementAudio.pitch;
         }
 
-
-        private void Update ()
+        private void Update()
         {
-            // Computer controlled tank will be moved by the TankAI component, so only read input for player controlled tanks
+            // AI가 아닌 경우에만 사용자 입력을 받아옵니다.
             if (!m_IsComputerControlled)
             {
                 m_MovementInputValue = m_MoveAction.ReadValue<float>();
                 m_TurnInputValue = m_TurnAction.ReadValue<float>();
             }
-            
-            EngineAudio ();
+
+            EngineAudio();
         }
 
-
-        private void EngineAudio ()
+        private void EngineAudio()
         {
-            // If there is no input (the tank is stationary)...
-            if (Mathf.Abs (m_MovementInputValue) < 0.1f && Mathf.Abs (m_TurnInputValue) < 0.1f)
+            // 이동 입력이 거의 없을 때
+            if (Mathf.Abs(m_MovementInputValue) < 0.1f && Mathf.Abs(m_TurnInputValue) < 0.1f)
             {
-                // ... and if the audio source is currently playing the driving clip...
+                // 주행 클립이 재생 중이라면 정지 상태로 변경합니다.
                 if (m_MovementAudio.clip == m_EngineDriving)
                 {
-                    // ... change the clip to idling and play it.
                     m_MovementAudio.clip = m_EngineIdling;
-                    m_MovementAudio.pitch = Random.Range (m_OriginalPitch - m_PitchRange, m_OriginalPitch + m_PitchRange);
-                    m_MovementAudio.Play ();
+                    m_MovementAudio.pitch = Random.Range(m_OriginalPitch - m_PitchRange, m_OriginalPitch + m_PitchRange);
+                    m_MovementAudio.Play();
                 }
             }
             else
             {
-                // Otherwise if the tank is moving and if the idling clip is currently playing...
+                // 정지 클립이 재생 중이라면 주행 사운드로 변경합니다.
                 if (m_MovementAudio.clip == m_EngineIdling)
                 {
-                    // ... change the clip to driving and play.
                     m_MovementAudio.clip = m_EngineDriving;
                     m_MovementAudio.pitch = Random.Range(m_OriginalPitch - m_PitchRange, m_OriginalPitch + m_PitchRange);
                     m_MovementAudio.Play();
@@ -184,77 +171,68 @@ namespace Tanks.Complete
             }
         }
 
-
-        private void FixedUpdate ()
+        private void FixedUpdate()
         {
-            // If this is using a gamepad or have direct control enabled, this used a different movement method : instead of
-            // "up" behind moving forward for the tank, it instead takes the gamepad move direction as the desired forward for the tank
-            // and will compute the speed and rotation needed to move the tank toward that direction.
-            if (m_InputUser.InputUser.controlScheme.Value.name == "Gamepad" ||  m_IsDirectControl)
-            {
-                var camForward = Camera.main.transform.forward;
-                camForward.y = 0;
-                camForward.Normalize();
-                var camRight = Vector3.Cross(Vector3.up, camForward);
-                
-                //this creates a vector based on camera look (e.g. pressing up mean we want to go up in the direction of the
-                //camera, not forward in the direction of the tank)
-                m_RequestedDirection = (camForward * m_MovementInputValue + camRight * m_TurnInputValue);
-            }
-            
-            // Adjust the rigidbodies position and orientation in FixedUpdate.
-            Move ();
-            Turn ();
-        }
-
-
-        private void Move ()
-        {
-            float speedInput = 0.0f;
-            
-            // In direct control mode, the speed will depend on how far from the desired direction we are
+            // Gamepad나 DirectControl 모드에서는 카메라 방향 기준으로 이동 방향을 설정합니다.
             if (m_InputUser.InputUser.controlScheme.Value.name == "Gamepad" || m_IsDirectControl)
             {
-                speedInput = m_RequestedDirection.magnitude;
-                //if we are direct control, the speed of the move is based angle between current direction and the wanted
-                //direction. If under 90, full speed, then speed reduced between 90 and 180
+                var camForward = Camera.main.transform.forward;
+                camForward.y = 0; // 수평 방향만 고려
+                camForward.Normalize();
+                var camRight = Vector3.Cross(Vector3.up, camForward); // 카메라 우측 벡터 계산
+
+                m_RequestedDirection = (camForward * m_MovementInputValue + camRight * m_TurnInputValue);
+            }
+
+            Move();
+            Turn();
+        }
+
+        private void Move()
+        {
+            float speedInput = 0.0f;
+
+            // DirectControl 모드라면 회전 각도에 따라 속도를 줄입니다.
+            if (m_InputUser.InputUser.controlScheme.Value.name == "Gamepad" || m_IsDirectControl)
+            {
+                speedInput = m_RequestedDirection.magnitude; // 방향 입력 세기
+                // 방향과 현재 정면 사이의 각도에 따라 속도 보정 (90도 이내는 그대로, 이상은 감소)
                 speedInput *= 1.0f - Mathf.Clamp01((Vector3.Angle(m_RequestedDirection, transform.forward) - 90) / 90.0f);
             }
             else
             {
-                // in normal "tank control" the speed value is how much we press "up/forward"
+                // 일반 탱크 방식: 위 방향 입력만큼 전진
                 speedInput = m_MovementInputValue;
             }
-            
-            // Create a vector in the direction the tank is facing with a magnitude based on the input, speed and the time between frames.
+
+            // 이동 벡터 계산 = 정면 * 입력 세기 * 속도 * 시간
             Vector3 movement = transform.forward * speedInput * m_Speed * Time.deltaTime;
 
-            // Apply this movement to the rigidbody's position.
+            // Rigidbody 위치 이동
             m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
         }
 
-
-        private void Turn ()
+        private void Turn()
         {
             Quaternion turnRotation;
-            // If in direct control...
+
+            // DirectControl 혹은 Gamepad일 경우
             if (m_InputUser.InputUser.controlScheme.Value.name == "Gamepad" || m_IsDirectControl)
             {
-                // Compute the rotation needed to reach the desired direction
+                // 원하는 방향과 현재 방향 사이의 회전 각도를 계산합니다.
                 float angleTowardTarget = Vector3.SignedAngle(m_RequestedDirection, transform.forward, transform.up);
-                var rotatingAngle = Mathf.Sign(angleTowardTarget) * Mathf.Min(Mathf.Abs(angleTowardTarget), m_TurnSpeed * Time.deltaTime);
-                turnRotation = Quaternion.AngleAxis(-rotatingAngle, Vector3.up);
+                float rotatingAngle = Mathf.Sign(angleTowardTarget) * Mathf.Min(Mathf.Abs(angleTowardTarget), m_TurnSpeed * Time.deltaTime);
+                turnRotation = Quaternion.AngleAxis(-rotatingAngle, Vector3.up); // 원하는 만큼만 회전
             }
             else
             {
+                // 일반 탱크 방식: 좌우 입력값에 따라 회전 각도를 결정
                 float turn = m_TurnInputValue * m_TurnSpeed * Time.deltaTime;
-
-                // Make this into a rotation in the y axis.
-                turnRotation = Quaternion.Euler (0f, turn, 0f);
+                turnRotation = Quaternion.Euler(0f, turn, 0f); // Y축 회전만 적용
             }
 
-            // Apply this rotation to the rigidbody's rotation.
-            m_Rigidbody.MoveRotation (m_Rigidbody.rotation * turnRotation);
+            // Rigidbody 회전 적용
+            m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
         }
     }
 }
