@@ -16,6 +16,13 @@ public class EnemyController : MonoBehaviour
     
     public GameObject[] deathSplatters;
     public GameObject hitEffect;
+
+    public bool shouldShoot;
+    
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public float fireRate;
+    private float fireCounter;
     
     private void Awake()
     {
@@ -46,6 +53,22 @@ public class EnemyController : MonoBehaviour
         {
             animator.SetBool("isMoving", false);
         }
+        
+        // 총알 발사
+        if (shouldShoot)
+        {
+            fireCounter -= Time.deltaTime;
+            if (fireCounter <= 0)
+            {
+                Shoot();
+                fireCounter = fireRate;
+            }
+        }
+    }
+
+    private void Shoot()
+    {
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 
     public void DamageEnemy(int damage)
