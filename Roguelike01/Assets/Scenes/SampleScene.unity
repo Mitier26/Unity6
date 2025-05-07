@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 302372480}
   - component: {fileID: 302372479}
   - component: {fileID: 302372477}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1273911036}
   - component: {fileID: 1273911037}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,7 +742,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1376109090}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,7 +774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1506064833}
   - component: {fileID: 1506064834}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +862,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1599265483}
   - component: {fileID: 1599265484}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1036,7 +1036,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1708002573}
   - component: {fileID: 1708002574}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,9 +1121,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2184508901824989878, guid: 93d6f44438a740c41b657da269ba4f9f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2909729246715930503, guid: 93d6f44438a740c41b657da269ba4f9f, type: 3}
       propertyPath: m_Name
       value: Enemy_Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909729246715930503, guid: 93d6f44438a740c41b657da269ba4f9f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995912969822736083, guid: 93d6f44438a740c41b657da269ba4f9f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5463908312063846482, guid: 93d6f44438a740c41b657da269ba4f9f, type: 3}
       propertyPath: m_LocalPosition.x

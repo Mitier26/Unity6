@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3051974945687472433}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 578621216756537732}
   - component: {fileID: 7860843339061209337}
   - component: {fileID: 9108703679595098316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_Skeleton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ MonoBehaviour:
   shouldShoot: 1
   bulletPrefab: {fileID: 7309464447723283246, guid: 7ca798e2ba5e65c4a81bdfbb963848fc, type: 3}
   firePoint: {fileID: 3051974945687472433}
-  fireRate: 0.5
+  fireRate: 1
 --- !u!95 &9108703679595098316
 Animator:
   serializedVersion: 7
@@ -198,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6715705916866476233}
   - component: {fileID: 6596511761635959371}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
