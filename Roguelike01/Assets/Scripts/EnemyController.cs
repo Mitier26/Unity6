@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         // 적이 화면 안에 있는지 확인
-        if (spriteRenderer.isVisible)
+        if (spriteRenderer.isVisible && PlayerController.instance.gameObject.activeInHierarchy)
         {
             // 플레이어와의 거리 계산
             if(Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChasePlayer)
@@ -60,6 +60,10 @@ public class EnemyController : MonoBehaviour
                     fireCounter = fireRate;
                 }
             }
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
         }
         
         

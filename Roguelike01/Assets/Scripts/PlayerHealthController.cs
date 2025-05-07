@@ -44,5 +44,6 @@ public class PlayerHealthController : MonoBehaviour
     private void PlayerDie()
     {
         PlayerController.instance.gameObject.SetActive(false);
+        UIController.instance.deathScreen.SetActive(true);
     }
 }
