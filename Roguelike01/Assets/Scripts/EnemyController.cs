@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyController : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class EnemyController : MonoBehaviour
 
     public int health = 150;
     
+    public GameObject[] deathSplatters;
+    public GameObject hitEffect;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,8 +25,10 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        // 플레이어와의 거리 계산
         if(Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChasePlayer)
         {
+            // 플레이어를 추적
             moveDirection = (PlayerController.instance.transform.position - transform.position).normalized;
             rb.linearVelocity = moveDirection * moveSpeed;
         }
@@ -45,8 +51,13 @@ public class EnemyController : MonoBehaviour
     public void DamageEnemy(int damage)
     {
         health -= damage;
+        Instantiate(hitEffect, transform.position, Quaternion.identity);
         if (health <= 0)
         {
+            // 적이 죽었을 때 흔적 생성
+            int randomIndex = Random.Range(0, deathSplatters.Length);
+            int randomRotation = Random.Range(0, 360);
+            Instantiate(deathSplatters[randomIndex], transform.position, Quaternion.Euler(0, 0, randomRotation));
             Destroy(gameObject);
         }
     }
