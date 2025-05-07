@@ -23,11 +23,17 @@ public class PlayerHealthController : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        
+        UIController.instance.UpdateHealthUI(currentHealth, maxHealth);
     }
     
     public void DamagePlayer()
     {
         currentHealth--;
+        
+        // UI 업데이트
+        UIController.instance.UpdateHealthUI(currentHealth, maxHealth);
+        
         if (currentHealth <= 0)
         {
             // 플레이어 사망 처리
