@@ -14,6 +14,12 @@ public class PlayerController : MonoBehaviour
     
     private Animator animator;
 
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
+    
+    public float timeBetweenShots;
+    private float shotCounter;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -49,6 +55,24 @@ public class PlayerController : MonoBehaviour
         // 무기 회전 적용 (GunArm이 오른쪽을 기준으로 만든 경우)
         GunArm.rotation = Quaternion.Euler(0, 0, angle);
         
+        // 총알 발사 마우스 왼쪽
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+            shotCounter = timeBetweenShots;
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            shotCounter -= Time.deltaTime;
+            
+            if (shotCounter <= 0)
+            {
+                Shoot();
+                shotCounter = timeBetweenShots;
+            }
+        }
+        
         if(rb.linearVelocity != Vector2.zero)
         {
             animator.SetBool("isMoving", true);
@@ -59,7 +83,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    private void Shoot()
+    {
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    }
     
     void OnMove(InputValue value)
     {
