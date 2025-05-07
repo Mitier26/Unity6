@@ -23,6 +23,9 @@ public class EnemyController : MonoBehaviour
     public Transform firePoint;
     public float fireRate;
     private float fireCounter;
+
+    public float shootRange;
+    public SpriteRenderer spriteRenderer;
     
     private void Awake()
     {
@@ -32,17 +35,33 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        // 플레이어와의 거리 계산
-        if(Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChasePlayer)
+        // 적이 화면 안에 있는지 확인
+        if (spriteRenderer.isVisible)
         {
-            // 플레이어를 추적
-            moveDirection = (PlayerController.instance.transform.position - transform.position).normalized;
-            rb.linearVelocity = moveDirection * moveSpeed;
+            // 플레이어와의 거리 계산
+            if(Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChasePlayer)
+            {
+                // 플레이어를 추적
+                moveDirection = (PlayerController.instance.transform.position - transform.position).normalized;
+                rb.linearVelocity = moveDirection * moveSpeed;
+            }
+            else
+            {
+                rb.linearVelocity = Vector2.zero;
+            }
+            
+            // 총알 발사
+            if (shouldShoot && Vector3.Distance(transform.position, PlayerController.instance.transform.position) < shootRange)
+            {
+                fireCounter -= Time.deltaTime;
+                if (fireCounter <= 0)
+                {
+                    Shoot();
+                    fireCounter = fireRate;
+                }
+            }
         }
-        else
-        {
-            rb.linearVelocity = Vector2.zero;
-        }
+        
         
         // 애니메이션 설정
         if (rb.linearVelocity.magnitude > 0)
@@ -52,17 +71,6 @@ public class EnemyController : MonoBehaviour
         else
         {
             animator.SetBool("isMoving", false);
-        }
-        
-        // 총알 발사
-        if (shouldShoot)
-        {
-            fireCounter -= Time.deltaTime;
-            if (fireCounter <= 0)
-            {
-                Shoot();
-                fireCounter = fireRate;
-            }
         }
     }
 
