@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
 
     public float rangeToChasePlayer;
     private Vector3 moveDirection;
+
+    public int health = 150;
     
     private void Awake()
     {
@@ -37,6 +39,15 @@ public class EnemyController : MonoBehaviour
         else
         {
             animator.SetBool("isMoving", false);
+        }
+    }
+
+    public void DamageEnemy(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -8,6 +8,8 @@ public class PlayerBullet : MonoBehaviour
     public float speed = 7.5f;
 
     [SerializeField] private GameObject impactEffect;
+
+    public int damageToGive = 50;
     
 
     private void Awake()
@@ -26,6 +28,13 @@ public class PlayerBullet : MonoBehaviour
         {
             // 벽에 충돌했을 때 이펙트 생성
             Instantiate(impactEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("Enemy"))
+        {
+            // 적에 충돌했을 때 이펙트 생성
+            Instantiate(impactEffect, transform.position, Quaternion.identity);
+            other.GetComponent<EnemyController>().DamageEnemy(damageToGive);
             Destroy(gameObject);
         }
     }
