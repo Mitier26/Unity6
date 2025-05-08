@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7385a3918c8954b9a2d26b0f610ad9, type: 3}
   m_Name: RustKey
   m_EditorClassIdentifier: 
+  id: 001
   objectName: "\uB179\uC2A8 \uC5F4\uC1E0"
   description: "\uB179\uC774 \uC2AC\uC5B4 \uC788\uB294 \uC5F4\uC1E0\uB2E4."
   interactableType: 2

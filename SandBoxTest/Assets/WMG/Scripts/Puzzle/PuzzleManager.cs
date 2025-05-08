@@ -43,6 +43,8 @@ public class PuzzleManager : MonoBehaviour
 
     void Start()
     {
+        SaveSystem.LoadWorldState();
+        
         if (startWithCutscene)
         {
             BeginCutscene();

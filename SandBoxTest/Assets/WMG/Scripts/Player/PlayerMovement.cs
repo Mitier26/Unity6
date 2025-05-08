@@ -34,10 +34,26 @@ public class PlayerMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
+        var data = SaveSystem.LoadGameState();
+        if (data != null)
+        {
+            // 위치 적용
+            controller.enabled = false;
+            transform.position = data.playerPosition.ToVector3();
+            transform.rotation = Quaternion.Euler(0f, data.playerRotationY, 0f);
+            controller.enabled = true;
+        }
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SaveSystem.DeleteAllSaves();
+            Debug.Log("🗑[T] 키 입력 → 저장 데이터 삭제 완료 테스트용 PlayerMovement.cs");
+        }
+        
         if (ObjectInspector.Instance?.IsInspecting == true || PuzzleManager.Instance?.IsCutsceneActive == true || PanelManager.Instance?.IsUiOpened == true)
         {
             return;

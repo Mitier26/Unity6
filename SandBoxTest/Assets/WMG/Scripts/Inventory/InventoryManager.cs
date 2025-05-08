@@ -22,6 +22,23 @@ public class InventoryManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject); // 원할 경우
     }
+    
+    private void Start()
+    {
+        // 인벤토리 불러오기
+        var ids = SaveSystem.LoadInventory();
+        inventoryItems.Clear();
+
+        foreach (var id in ids)
+        {
+            var item = InventoryDatabase.Instance.GetItemByID(id);
+            if (item != null)
+                inventoryItems.Add(item);
+        }
+
+        Debug.Log($"인벤토리 불러오기 완료 ({inventoryItems.Count}개)");
+    }
+
 
     /// <summary>
     /// 아이템 추가

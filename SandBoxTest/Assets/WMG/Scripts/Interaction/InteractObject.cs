@@ -13,6 +13,15 @@ public class InteractObject : MonoBehaviour, IInteractable
             info = GetComponent<InteractableInfo>();
     }
     
+    private void Start()
+    {
+        var objectID = info?.objectInfoData?.id;
+        if (!string.IsNullOrEmpty(objectID) && SaveSystem.IsCollected(objectID))
+        {
+            gameObject.SetActive(false);
+        }
+    }
+    
     public void Interact()
     {
         if (info == null)
@@ -46,6 +55,16 @@ public class InteractObject : MonoBehaviour, IInteractable
         }
 
         InventoryManager.Instance.AddItem(inventoryData);
+        
+        var objectID = info.objectInfoData?.id;
+        if (!string.IsNullOrEmpty(objectID))
+        {
+            SaveSystem.MarkObjectCollected(objectID);
+            SaveSystem.SaveWorldState();
+            SaveSystem.SaveInventory(new List<InventoryItemData>(InventoryManager.Instance.Items));
+            SaveSystem.SaveGameState();
+        }
+        
         Debug.Log($"인벤토리 추가됨: {inventoryData.displayName}");
 
         // 오브젝트 제거
