@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 749411712441979503}
   - component: {fileID: 578621216756537732}
   - component: {fileID: 7860843339061209337}
+  - component: {fileID: 2706028084237486621}
   - component: {fileID: 9108703679595098316}
   m_Layer: 8
   m_Name: Enemy_Skeleton
@@ -166,6 +167,20 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7309464447723283246, guid: 7ca798e2ba5e65c4a81bdfbb963848fc, type: 3}
   firePoint: {fileID: 3051974945687472433}
   fireRate: 1
+  shootRange: 10
+  spriteRenderer: {fileID: 6596511761635959371}
+--- !u!114 &2706028084237486621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2909729246715930503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1dacdbf1ca13a4fbbc56e51fa65a5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &9108703679595098316
 Animator:
   serializedVersion: 7

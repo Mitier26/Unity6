@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     private float shotCounter;
     
     public SpriteRenderer bodySprite;
+
+    private float activeMoveSpeed;
+    public float dashSpeed = 8f, dashLength = 0.5f, dashCooldown = 1f, dashInvincibility = 0.5f;
+    private float dashCounter, dashcooldownCounter;
     
     private void Awake()
     {
@@ -41,12 +45,14 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        activeMoveSpeed = moveSpeed;
     }
 
     void Update()
     {
         // 이동
-        rb.linearVelocity = moveInput * moveSpeed;
+        rb.linearVelocity = moveInput * activeMoveSpeed;
 
         // 마우스 위치를 월드 좌표로 변환
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -87,6 +93,30 @@ public class PlayerController : MonoBehaviour
                 Shoot();
                 shotCounter = timeBetweenShots;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (dashcooldownCounter <= 0 && dashCounter <= 0)
+            {
+                activeMoveSpeed = dashSpeed;
+                dashCounter = dashLength;
+            }
+        }
+
+        if (dashCounter > 0)
+        {
+            dashCounter -= Time.deltaTime;
+            if (dashCounter <= 0)
+            {
+                activeMoveSpeed = moveSpeed;
+                dashcooldownCounter = dashCooldown;
+            }
+        }
+
+        if (dashcooldownCounter > 0)
+        {
+            dashcooldownCounter -= Time.deltaTime;
         }
         
         if(rb.linearVelocity != Vector2.zero)
