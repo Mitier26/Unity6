@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public float timeBetweenShots;
     private float shotCounter;
     
+    public SpriteRenderer bodySprite;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

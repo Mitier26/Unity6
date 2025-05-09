@@ -8,6 +8,10 @@ public class PlayerHealthController : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
 
+    public float damageInvincLength = 1f;
+    private float damageInvincCounter;
+
+    
     private void Awake()
     {
         if (instance == null)
@@ -25,19 +29,40 @@ public class PlayerHealthController : MonoBehaviour
         currentHealth = maxHealth;
         
         UIController.instance.UpdateHealthUI(currentHealth, maxHealth);
+        
     }
-    
+
+    private void Update()
+    {
+        if (damageInvincCounter > 0)
+        {
+            damageInvincCounter -= Time.deltaTime;
+
+            if (damageInvincCounter <= 0)
+            {
+                PlayerController.instance.bodySprite.color = new Color(PlayerController.instance.bodySprite.color.r, PlayerController.instance.bodySprite.color.g, PlayerController.instance.bodySprite.color.b, 1f);
+            }
+        }
+    }
+
     public void DamagePlayer()
     {
-        currentHealth--;
-        
-        // UI 업데이트
-        UIController.instance.UpdateHealthUI(currentHealth, maxHealth);
-        
-        if (currentHealth <= 0)
+        if (damageInvincCounter <= 0)
         {
-            // 플레이어 사망 처리
-            PlayerDie();
+            currentHealth--;
+
+            damageInvincCounter = damageInvincLength;
+           
+            PlayerController.instance.bodySprite.color = new Color(PlayerController.instance.bodySprite.color.r, PlayerController.instance.bodySprite.color.g, PlayerController.instance.bodySprite.color.b, 0.5f);
+            
+            // UI 업데이트
+            UIController.instance.UpdateHealthUI(currentHealth, maxHealth);
+        
+            if (currentHealth <= 0)
+            {
+                // 플레이어 사망 처리
+                PlayerDie();
+            }
         }
     }
     
