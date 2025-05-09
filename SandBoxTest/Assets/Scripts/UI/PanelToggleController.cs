@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PanelToggleController : MonoBehaviour
@@ -21,6 +22,10 @@ public class PanelToggleController : MonoBehaviour
     [Tooltip("이 패널이 ESC 키로 열리는 패널인지 여부 (옵션 패널 등)")]
     public bool isEscActivatedPanel = false;
 
+    public InputActionAsset inputAsset;
+    private InputActionMap uiMap;
+    public string uiActionMapName = "UI";
+
     private void Start()
     {
         // 패널이 연결되어 있는지 확인
@@ -28,6 +33,11 @@ public class PanelToggleController : MonoBehaviour
         {
             Debug.LogError("Panel is not assigned to PanelToggleController on " + gameObject.name);
             return;
+        }
+        
+        if (inputAsset != null)
+        {
+            uiMap = inputAsset.FindActionMap(uiActionMapName, true);
         }
 
         // 시작 시 패널을 비활성화
@@ -68,6 +78,8 @@ public class PanelToggleController : MonoBehaviour
             targetPanel.SetActive(true);
             PanelManager.Instance.SetActivePanel(targetPanel, this);
             
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
@@ -78,6 +90,9 @@ public class PanelToggleController : MonoBehaviour
         {
             targetPanel.SetActive(false);
             PanelManager.Instance.ClearActivePanel(targetPanel);
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 

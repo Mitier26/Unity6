@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: TestFlow
   m_EditorClassIdentifier: 
   flowName: "\uD29C\uD1A0\uB9AC\uC5BC \uBC29 \uD37C\uC990"
-  steps: []
+  steps:
+  - {fileID: 11400000, guid: f6e1666e201e29140bd1b68f74e74043, type: 2}

@@ -10,6 +10,8 @@ public class InventoryManager : MonoBehaviour
     private List<InventoryItemData> inventoryItems = new();
 
     public IReadOnlyList<InventoryItemData> Items => inventoryItems.AsReadOnly();
+    public List<InventoryItemData> InternalList => inventoryItems;
+
 
     private void Awake()
     {
