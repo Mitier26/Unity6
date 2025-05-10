@@ -26,7 +26,10 @@ public class PlayerController : MonoBehaviour
 
     private float activeMoveSpeed;
     public float dashSpeed = 8f, dashLength = 0.5f, dashCooldown = 1f, dashInvincibility = 0.5f;
-    private float dashCounter, dashcooldownCounter;
+    
+    [HideInInspector]
+    public float dashCounter;
+    private float dashcooldownCounter;
     
     private void Awake()
     {
