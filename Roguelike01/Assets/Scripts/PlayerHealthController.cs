@@ -71,4 +71,10 @@ public class PlayerHealthController : MonoBehaviour
         PlayerController.instance.gameObject.SetActive(false);
         UIController.instance.deathScreen.SetActive(true);
     }
+
+    public void MakeInvincible(float length)
+    {
+        damageInvincCounter = length;
+        PlayerController.instance.bodySprite.color = new Color(PlayerController.instance.bodySprite.color.r, PlayerController.instance.bodySprite.color.g, PlayerController.instance.bodySprite.color.b, 0.5f);
+    }
 }

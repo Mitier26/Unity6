@@ -103,6 +103,8 @@ public class PlayerController : MonoBehaviour
                 dashCounter = dashLength;
                 
                 animator.SetTrigger("dash");
+                
+                PlayerHealthController.instance.MakeInvincible(dashInvincibility);
             }
         }
 
