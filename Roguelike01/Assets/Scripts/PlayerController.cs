@@ -108,6 +108,8 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("dash");
                 
                 PlayerHealthController.instance.MakeInvincible(dashInvincibility);
+                
+                AudioManager.instance.PlaySfx(8);
             }
         }
 
@@ -138,6 +140,7 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
+        AudioManager.instance.PlaySfx(12);
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
     

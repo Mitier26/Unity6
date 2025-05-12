@@ -22,10 +22,7 @@ public class HealthPickup : MonoBehaviour
             // 플레이어에게 체력 회복
             PlayerHealthController.instance.HealPlayer(healAmount);
             Destroy(gameObject);
-        }
-        {
-            PlayerHealthController.instance.HealPlayer(healAmount);
-            Destroy(gameObject);
+            AudioManager.instance.PlaySfx(7);
         }
     }
 }

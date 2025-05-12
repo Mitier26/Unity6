@@ -81,14 +81,18 @@ public class EnemyController : MonoBehaviour
     private void Shoot()
     {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        AudioManager.instance.PlaySfx(13);
     }
 
     public void DamageEnemy(int damage)
     {
         health -= damage;
+        AudioManager.instance.PlaySfx(2);
         Instantiate(hitEffect, transform.position, Quaternion.identity);
+        
         if (health <= 0)
         {
+            AudioManager.instance.PlaySfx(1);
             // 적이 죽었을 때 흔적 생성
             int randomIndex = Random.Range(0, deathSplatters.Length);
             int randomRotation = Random.Range(0, 360);

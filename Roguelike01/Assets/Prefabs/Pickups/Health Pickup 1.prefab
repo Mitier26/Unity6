@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4658703862025900137}
   - component: {fileID: 2847239368493006168}
   - component: {fileID: 3856288861120306312}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Health Pickup 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 718847823688365954, guid: fb2a687d5414ef4459761bcb1a9529e6, type: 3}
+  m_Sprite: {fileID: -3596705950354237480, guid: fb2a687d5414ef4459761bcb1a9529e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 1
+  waitToBeCollected: 0.5
 --- !u!61 &3856288861120306312
 BoxCollider2D:
   m_ObjectHideFlags: 0
