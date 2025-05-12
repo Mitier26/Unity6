@@ -30,6 +30,8 @@ public class LevelManager : MonoBehaviour
 
         PlayerController.instance.canMove = false;
         
+        UIController.instance.StartFadeToBlack();
+        
         yield return new WaitForSeconds(waitToLoad);
         
         // 다음 레벨로 이동
