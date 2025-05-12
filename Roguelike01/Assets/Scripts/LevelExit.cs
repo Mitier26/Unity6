@@ -18,6 +18,8 @@ public class LevelExit : MonoBehaviour
     
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(levelToLoad);
+        //SceneManager.LoadScene(levelToLoad);
+
+        StartCoroutine(LevelManager.instance.LevelEnd());
     }
 }

@@ -3400,7 +3400,7 @@ PrefabInstance:
       objectReference: {fileID: 87615177}
     - target: {fileID: 4057017050240360567, guid: 03be47f2a5e0f714dbd7bd976c965ef6, type: 3}
       propertyPath: openWhenEnemiesCleared
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4661382552687542556, guid: 03be47f2a5e0f714dbd7bd976c965ef6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10290,6 +10290,7 @@ GameObject:
   - component: {fileID: 1456519164}
   - component: {fileID: 1456519163}
   - component: {fileID: 1456519165}
+  - component: {fileID: 1456519166}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -10366,6 +10367,20 @@ MonoBehaviour:
   - {fileID: 98638533}
   - {fileID: 1561947069}
   - {fileID: 206335507}
+--- !u!114 &1456519166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456519162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9722a6c59d3db884488b7164b33a616c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitToLoad: 4
+  nextLevel: Test2
 --- !u!4 &1498111613 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5463908312063846482, guid: 93d6f44438a740c41b657da269ba4f9f, type: 3}
@@ -12955,7 +12970,7 @@ PrefabInstance:
       objectReference: {fileID: 227661165}
     - target: {fileID: 4057017050240360567, guid: 03be47f2a5e0f714dbd7bd976c965ef6, type: 3}
       propertyPath: openWhenEnemiesCleared
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4661382552687542556, guid: 03be47f2a5e0f714dbd7bd976c965ef6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13555,7 +13570,7 @@ PrefabInstance:
       objectReference: {fileID: 1107241117}
     - target: {fileID: 7749433736411885197, guid: 50f7838193101c541b067281bbea885b, type: 3}
       propertyPath: openWhenEnemiesCleared
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9114756685529467565, guid: 50f7838193101c541b067281bbea885b, type: 3}
       propertyPath: m_Name
