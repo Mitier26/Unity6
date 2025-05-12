@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Enemy
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - Player Bullet
   - Enemy
   - Enemy Bullet
-  - 
-  - 
-  - 
+  - Breakable
+  - IgnoreBullets
+  - Pickups
   - 
   - 
   - 
