@@ -1257,7 +1257,7 @@ MonoBehaviour:
   nextDialogueUI: {fileID: 6951324627255602619}
   crosshair: {fileID: 5275263122059578427}
   director: {fileID: 1303683143}
-  startWithCutscene: 0
+  startWithCutscene: 1
 --- !u!4 &1832156721
 Transform:
   m_ObjectHideFlags: 0
