@@ -817,10 +817,10 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   scriptingDefineSymbols:
-    Android: TMP_PRESENT;USE_TIMELINE
-    Standalone: TMP_PRESENT;USE_TIMELINE
-    WebGL: TMP_PRESENT;USE_TIMELINE
-    Windows Store Apps: TMP_PRESENT;USE_TIMELINE
+    Android: TMP_PRESENT;USE_TIMELINE;USE_PHYSICS2D
+    Standalone: TMP_PRESENT;USE_TIMELINE;USE_PHYSICS2D
+    WebGL: TMP_PRESENT;USE_TIMELINE;USE_PHYSICS2D
+    Windows Store Apps: TMP_PRESENT;USE_TIMELINE;USE_PHYSICS2D
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
