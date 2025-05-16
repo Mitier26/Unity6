@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -15,6 +16,8 @@ public class UIController : MonoBehaviour
     public Image fadeImage;
     public float fadeSpeed;
     private bool fadeToBlack, fadeOutBlack;
+
+    public string newGameScene, mainMenuScene;
 
     private void Awake()
     {
@@ -71,5 +74,15 @@ public class UIController : MonoBehaviour
         HealthSlider.value = currentHealth;
         
         HealthText.text = $"{currentHealth} / {maxHealth}";
+    }
+
+    public void NewGame()
+    {
+        SceneManager.LoadScene(newGameScene);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuScene);
     }
 }
