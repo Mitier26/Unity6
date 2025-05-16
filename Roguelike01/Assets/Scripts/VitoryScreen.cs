@@ -9,6 +9,11 @@ public class VitoryScreen : MonoBehaviour
 
     public string mainMenuScene;
 
+    void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     void Update()
     {
         if(waitForAnyKey > 0)

@@ -57,17 +57,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (canMove)
+        if (canMove && !LevelManager.instance.isPaused)
         {
             // 이동
             rb.linearVelocity = moveInput * activeMoveSpeed;
 
             // 마우스 위치를 월드 좌표로 변환
-            Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mouseWorldPos = Input.mousePosition;
             mouseWorldPos.z = 0;
+            Vector3 screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
 
             // 스프라이트 반전 (마우스가 왼쪽에 있으면 뒤집기)
-            if (mouseWorldPos.x < transform.position.x)
+            if (mouseWorldPos.x < screenPoint.x)
             {
                 transform.localScale = new Vector3(-1f, 1f, 1f);
                 GunArm.localScale = new Vector3(-1f, -1f, 1f);
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour
             }
 
             // 방향 벡터 계산
-            Vector3 lookDir = mouseWorldPos - GunArm.position;
+            Vector3 lookDir = new Vector2(mouseWorldPos.x - screenPoint.x, mouseWorldPos.y - screenPoint.y);
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
             // 무기 회전 적용 (GunArm이 오른쪽을 기준으로 만든 경우)
@@ -116,6 +117,25 @@ public class PlayerController : MonoBehaviour
 
                     AudioManager.instance.PlaySfx(8);
                 }
+            }
+
+            // 이동 속도 설정
+            if (dashCounter > 0)
+            {
+                activeMoveSpeed = dashSpeed;
+            }
+            else
+            {
+                activeMoveSpeed = moveSpeed;
+            }
+
+            // 이동 애니메이션
+            animator.SetBool("isMoving", rb.linearVelocity != Vector2.zero);
+
+            // 플레이어가 대시 중이 아닐 때만 이동 가능
+            if (dashCounter <= 0)
+            {
+                rb.linearVelocity = moveInput * activeMoveSpeed;
             }
 
             if (dashCounter > 0)
