@@ -266,6 +266,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 740471774369065699, guid: 32d6f9100209be741be89dc436dc34fe,
+        type: 3}
+      propertyPath: m_Cameras.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1739594562131320550, guid: 32d6f9100209be741be89dc436dc34fe,
         type: 3}
       propertyPath: crosshairUI
@@ -437,7 +442,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 44085425254082858, guid: 32d6f9100209be741be89dc436dc34fe, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7139794539313741713, guid: 32d6f9100209be741be89dc436dc34fe,
         type: 3}
@@ -756,7 +762,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1303683142}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 68fef810170b87e44a00462dfcefafe7, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 2788c0bff6029044f96bf4989a99ece1, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
