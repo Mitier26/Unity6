@@ -14,7 +14,7 @@ public class Brain : MonoBehaviour
     private bool m_Jump;
     bool alive = true;
 
-    void OCollisionEnter(Collision obj)
+    void OnCollisionEnter (Collision obj)
     {
         if (obj.gameObject.tag == "dead")
         {

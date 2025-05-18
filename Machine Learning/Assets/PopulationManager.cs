@@ -13,7 +13,7 @@ public class PopulationManager : MonoBehaviour
 
     GUIStyle style = new GUIStyle();
 
-    void OUI()
+    void OnGUI()
     {
         style.fontSize = 25;
         style.normal.textColor = Color.white;
