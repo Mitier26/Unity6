@@ -56,8 +56,8 @@ public class PopulationManager : MonoBehaviour
 
     void BreedNewPopulation()
     {
-        List<GameObject> sortedList = population.OrderBy(o => o.GetComponent<Brain>().timeAlive).ToList();
-
+        // List<GameObject> sortedList = population.OrderBy(o => o.GetComponent<Brain>().timeAlive).ToList();
+        List<GameObject> sortedList = population.OrderBy(o => o.GetComponent<Brain>().distanceTravelled).ToList();
         population.Clear();
 
         for (int i = (int)(sortedList.Count * 0.5f) - 1; i < sortedList.Count - 1; i++)
