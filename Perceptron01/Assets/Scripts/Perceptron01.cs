@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class TrainingSet
+public class TrainingSet01
 {
 	public double[] input;
 	public double output;
 }
 
-public class Perceptron : MonoBehaviour {
+public class Perceptron01 : MonoBehaviour {
 
 	public TrainingSet[] ts;
 	double[] weights = {0,0};
