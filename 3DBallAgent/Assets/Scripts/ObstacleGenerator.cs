@@ -56,4 +56,15 @@ public class ObstacleGenerator : MonoBehaviour
             }
         }
     }
+
+    public void RemoveObstacles()
+    {
+        for (int i = 0; i < obstacles.Count; i++)
+        {
+            if (obstacles[i])
+            {
+                Destroy(obstacles[i]);
+            }
+        }
+    }
 }
