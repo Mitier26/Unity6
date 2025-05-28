@@ -2,34 +2,38 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.MLAgents;
+using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
 
-public class CubeBehavior : MonoBehaviour
+public class CubeBehavior : Agent
 {
     public float cubeSpeed = 0.1f;
 
     public ObstacleGenerator obstacleGenerator;
     private Vector3 startingPosition;
+    public event Action OnReset;
 
-    private void Start()
+    public override void Initialize()
     {
         startingPosition = transform.position;
-        obstacleGenerator = FindAnyObjectByType<ObstacleGenerator>();
     }
 
-    private void Update()
+    public override void Heuristic(in ActionBuffers actionBuffers)
     {
+        var discreteAction = actionBuffers.DiscreteActions;
+
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            Vector3 position = transform.position;
-            position.x -= cubeSpeed;
-            transform.position = position;
+            discreteAction[0] = 1;
         }
-
-        if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
-            Vector3 position = transform.position;
-            position.x += cubeSpeed;
-            transform.position = position;
+            discreteAction[0] = 2;
+        }
+        else
+        {
+            discreteAction[0] = 0;
         }
     }
 
@@ -37,7 +41,16 @@ public class CubeBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            Reset();
+            AddReward(-1f);
+            EndEpisode();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Score"))
+        {
+            AddReward(2f);
         }
     }
 
@@ -45,6 +58,53 @@ public class CubeBehavior : MonoBehaviour
     {
         transform.position = startingPosition;
         obstacleGenerator.RemoveObstacles();
+        OnReset?.Invoke();
+    }
+
+    public override void OnActionReceived(ActionBuffers actions)
+    {
+        int action = actions.DiscreteActions[0];
+        AddReward(-0.001f);
+
+        if (action == 1)
+        {
+            MoveLeft();
+        }
+        else if (action == 2)
+        {
+            MoveRight();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        RequestDecision();
+        if (transform.position.y < -1f)
+        {
+            AddReward(-1f);
+            EndEpisode();
+        }
+    }
+
+    private void MoveLeft()
+    {
+        Vector3 position = transform.position;
+        position.x -= cubeSpeed;
+        transform.position = position;
+        //transform.Translate(Vector3.left * cubeSpeed * Time.deltaTime);
+    }
+
+    private void MoveRight()
+    {
+        Vector3 position = transform.position;
+        position.x += cubeSpeed;
+        transform.position = position;
+        transform.Translate(Vector3.right * cubeSpeed * Time.deltaTime);
+    }
+
+    public override void OnEpisodeBegin()
+    {
+        Reset();
     }
 }
 
