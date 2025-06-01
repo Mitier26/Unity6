@@ -46,9 +46,23 @@ public class Board : MonoBehaviour
         }
         
         // diagonal
+        if (CheckValues(0, 4) && CheckValues(0, 8))
+            return true;
         
+        if (CheckValues(2, 4) && CheckValues(2, 6))
+            return true;
         
         return false;
+    }
+
+    public void Reset()
+    {
+        foreach (Cell cell in mCells)
+        {
+            cell.mLabel.text = "";
+
+            cell.mButton.interactable = true;
+        }
     }
 
     private bool CheckValues(int firstIndex, int secondIndex)
