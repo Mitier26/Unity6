@@ -6,6 +6,7 @@ using TMPro;
 public class Main : MonoBehaviour
 {
     public Board mBoard;
+    public TextMeshProUGUI mCursor;
     public GameObject mWinner;
 
     private bool mXTurn = true;
@@ -13,6 +14,8 @@ public class Main : MonoBehaviour
     private void Awake()
     {
         mBoard.Build(this);
+
+        mCursor.text = GetTurnCharacter();
     }
 
     public void Switch()
@@ -28,6 +31,8 @@ public class Main : MonoBehaviour
         }
         
         mXTurn = !mXTurn;
+
+        mCursor.text = GetTurnCharacter();
     }
 
     public string GetTurnCharacter()
