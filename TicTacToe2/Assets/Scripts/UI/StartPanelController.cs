@@ -9,4 +9,15 @@ public class StartPanelController : PanelController
         GameManager.Instance.StartGame();
         Hide();
     }
+
+    public void OnClickDualPlayButton()
+    {
+        
+    }
+
+    public void OnClickSettingsButton()
+    {
+        
+    }
+
 }
