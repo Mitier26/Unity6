@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TestBullet : MonoBehaviour
@@ -6,6 +7,9 @@ public class TestBullet : MonoBehaviour
     private float speed;
     private Vector2 lastVelocity;
     private int hp = 1;
+
+    private HashSet<Collider2D> hitCells = new HashSet<Collider2D>();
+    private bool hasProcessedCellHitThisFrame = false;
 
     private void Awake()
     {
@@ -27,41 +31,54 @@ public class TestBullet : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        hasProcessedCellHitThisFrame = false; // 프레임마다 셀 충돌 처리 플래그 초기화
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
-    {   
+    {
         GameObject other = collision.gameObject;
+
         // 다른 총알과 충돌
         if (other.TryGetComponent<TestBullet>(out var otherBullet))
         {
             hp--;
-
             if (hp <= 0)
             {
                 Destroy(gameObject);
                 return;
             }
 
-            // 반사 (속도 유지)
+            // 반사
             rb.linearVelocity = lastVelocity.normalized * speed;
             return;
         }
-        
-        // 셀과 충돌 시, 셀에게 "맞았다" 알림
+
+        // 셀과 충돌
         if (other.TryGetComponent<CellController>(out var cell))
         {
-            if (other.layer != gameObject.layer) // 적 팀만 반응
+            if (other.layer != gameObject.layer) // 적 팀 셀만 반응
             {
-                cell.HitByBullet(gameObject.layer); // 총알의 팀 전달
-                hp--;
-                if (hp <= 0)
+                if (!hitCells.Contains(collision.collider) && !hasProcessedCellHitThisFrame)
                 {
-                    Destroy(gameObject);
-                    return;
+                    hitCells.Add(collision.collider);
+                    hasProcessedCellHitThisFrame = true;
+
+                    cell.HitByBullet(gameObject.layer);
+                    hp--;
+
+                    if (hp <= 0)
+                    {
+                        Destroy(gameObject);
+                        return;
+                    }
                 }
             }
-            return; // 같은 팀 셀은 무시
+            return;
         }
-        
+
+        // 벽 등 반사 처리
         if (collision.contactCount == 0) return;
 
         Vector2 normal = collision.contacts[0].normal;
