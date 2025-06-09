@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6440309282900633727}
   - component: {fileID: -7118065284196731276}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Bullet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +259,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 824533cea3c10254ca9a7ce45e8d2602, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

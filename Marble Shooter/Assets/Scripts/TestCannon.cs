@@ -11,6 +11,7 @@ public class TestCannon : MonoBehaviour
     [SerializeField] private float angleLimit = 50f;
     [SerializeField] private float duration = 2f;
     [SerializeField] private float bulletSpeed = 5f;
+    [SerializeField] private int bulletHp = 1;
 
     private float currentDirection; // 1 또는 -1
     private Tween rotationTween;
@@ -91,12 +92,10 @@ public class TestCannon : MonoBehaviour
             trail.endColor = material.color;
         }
         
-        // 발사 방향 적용
-        var rb = bullet.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        var bulleto = bullet.GetComponent<TestBullet>();
+        if (bulleto != null)
         {
-            rb.velocity = shooter.up * bulletSpeed;
+            bulleto.Initialize(shooter.up, bulletSpeed, bulletHp);
         }
-
     }
 }
