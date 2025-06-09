@@ -10,9 +10,16 @@ public class TestCannon : MonoBehaviour
 
     private float currentDirection; // 1 또는 -1
     private Tween rotationTween;
+    
+    public enum PlayerType { Player1, Player2, }
+
+    [SerializeField] private PlayerType _playerType;
+    [SerializeField] private Material[] _playerMaterials;
 
     private void Start()
     {
+        // 태그, 레이어, 색 설전
+        
         // 1. 랜덤 시작 각도
         float startAngle = UnityEngine.Random.Range(-angleLimit, angleLimit);
         cannon.localRotation = Quaternion.Euler(0, 0, startAngle);
@@ -22,6 +29,19 @@ public class TestCannon : MonoBehaviour
 
         // 3. 회전 시작
         StartRotating();
+    }
+
+    private void InitPlayer(PlayerType playerType)
+    {
+        this.tag = playerType.ToString();
+        this.gameObject.layer = LayerMask.NameToLayer(playerType.ToString());
+        
+        // 색상/재질 설정
+        var sr = cannon.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.material = _playerMaterials[(int)playerType];
+        }
     }
 
     private void StartRotating()
