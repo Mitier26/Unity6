@@ -5,21 +5,30 @@ using DG.Tweening;
 public class TestCannon : MonoBehaviour
 {
     [SerializeField] private Transform cannon;
+    [SerializeField] private Material material; // 고정 색상
     [SerializeField] private float angleLimit = 50f;
     [SerializeField] private float duration = 2f;
 
     private float currentDirection; // 1 또는 -1
     private Tween rotationTween;
-    
-    public enum PlayerType { Player1, Player2, }
 
-    [SerializeField] private PlayerType _playerType;
-    [SerializeField] private Material[] _playerMaterials;
+    private void Awake()
+    {
+        // 이름을 기반으로 태그, 레이어 지정
+        string name = gameObject.name;
+        gameObject.tag = name;
+        gameObject.layer = LayerMask.NameToLayer(name);
+
+        // 색상 지정
+        var sr = cannon.GetComponent<SpriteRenderer>();
+        if (sr != null && material != null)
+        {
+            sr.material = material;
+        }
+    }
 
     private void Start()
     {
-        // 태그, 레이어, 색 설전
-        
         // 1. 랜덤 시작 각도
         float startAngle = UnityEngine.Random.Range(-angleLimit, angleLimit);
         cannon.localRotation = Quaternion.Euler(0, 0, startAngle);
@@ -31,18 +40,6 @@ public class TestCannon : MonoBehaviour
         StartRotating();
     }
 
-    private void InitPlayer(PlayerType playerType)
-    {
-        this.tag = playerType.ToString();
-        this.gameObject.layer = LayerMask.NameToLayer(playerType.ToString());
-        
-        // 색상/재질 설정
-        var sr = cannon.GetComponent<SpriteRenderer>();
-        if (sr != null)
-        {
-            sr.material = _playerMaterials[(int)playerType];
-        }
-    }
 
     private void StartRotating()
     {

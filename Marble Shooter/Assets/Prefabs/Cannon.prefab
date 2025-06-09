@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8760100660067884406}
   - component: {fileID: 2186257889542316542}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cannon
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannon: {fileID: 7848497608722785743}
+  material: {fileID: 2100000, guid: 6f2754ea207774a4482589947a52cde8, type: 2}
   angleLimit: 50
   duration: 2
 --- !u!1 &4721836009473758199
@@ -58,7 +59,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5367084127055397095}
   - component: {fileID: 2530045347932217897}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7848497608722785743}
   - component: {fileID: 1828596364211951739}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
