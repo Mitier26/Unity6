@@ -5,27 +5,15 @@ using DG.Tweening;
 public class TestCannon : MonoBehaviour
 {
     [SerializeField] private Transform cannon;
+    [SerializeField] private Transform shooter;
+    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Material material; // 고정 색상
     [SerializeField] private float angleLimit = 50f;
     [SerializeField] private float duration = 2f;
+    [SerializeField] private float bulletSpeed = 5f;
 
     private float currentDirection; // 1 또는 -1
     private Tween rotationTween;
-
-    private void Awake()
-    {
-        // 이름을 기반으로 태그, 레이어 지정
-        string name = gameObject.name;
-        gameObject.tag = name;
-        gameObject.layer = LayerMask.NameToLayer(name);
-
-        // 색상 지정
-        var sr = cannon.GetComponent<SpriteRenderer>();
-        if (sr != null && material != null)
-        {
-            sr.material = material;
-        }
-    }
 
     private void Start()
     {
@@ -38,6 +26,14 @@ public class TestCannon : MonoBehaviour
 
         // 3. 회전 시작
         StartRotating();
+    }
+    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
     }
 
 
@@ -56,6 +52,7 @@ public class TestCannon : MonoBehaviour
             .OnComplete(StartRotating); // 다음 회전 반복
     }
 
+
     private void CheckDirectionChange()
     {
         float currentZ = cannon.localEulerAngles.z;
@@ -68,5 +65,38 @@ public class TestCannon : MonoBehaviour
             rotationTween.Kill(); // 현재 트윈 중단
             StartRotating();      // 반대 방향으로 재시작
         }
+    }
+
+    private void Shoot()
+    {
+        // 총알 생성
+        var bullet = Instantiate(bulletPrefab, shooter.position, shooter.rotation);
+
+        // 태그와 레이어 설정
+        bullet.tag = this.tag;
+        bullet.layer = this.gameObject.layer;
+        
+        // 머터리얼 설정
+        var sr = bullet.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.material = material;
+        }
+
+        // 꼬리색 설정
+        var trail = bullet.GetComponent<TrailRenderer>();
+        if (trail != null)
+        {
+            trail.startColor = material.color;
+            trail.endColor = material.color;
+        }
+        
+        // 발사 방향 적용
+        var rb = bullet.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = shooter.up * bulletSpeed;
+        }
+
     }
 }

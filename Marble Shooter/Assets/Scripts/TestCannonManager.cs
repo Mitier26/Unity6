@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,12 @@ public class TestCannonManager : MonoBehaviour
     [SerializeField] private Material player1Material;
     [SerializeField] private Material player2Material;
 
-    public void InitCannons(int numberOfCannons)
+    private void Start()
+    {
+        InitCannons();
+    }
+
+    public void InitCannons()
     {
         for (int i = 0; i < cannons.Count; i++)
         {

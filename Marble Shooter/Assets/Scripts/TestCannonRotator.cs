@@ -16,6 +16,14 @@ public class TestCannonRotator : MonoBehaviour
     {
         this.tag = tagName;
         this.gameObject.layer = LayerMask.NameToLayer(layerName);
+        
+        // 1. 랜덤 시작 각도
+        float startAngle = UnityEngine.Random.Range(-angleLimit, angleLimit);
+        cannon.localRotation = Quaternion.Euler(0, 0, startAngle);
+
+        // 2. 랜덤 방향 설정
+        currentDirection = UnityEngine.Random.value > 0.5f ? 1 : -1;
+        
         if (cannonRenderer != null)
             cannonRenderer.material = material;
     }
