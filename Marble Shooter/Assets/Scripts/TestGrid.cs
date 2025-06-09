@@ -38,12 +38,12 @@ public class TestGrid : MonoBehaviour
                 if (y < height / 2)
                 {
                     cell.tag = "Player1";    // 유니티 태그 관리자에서 사전 등록 필요
-                    cell.layer = 1;          // 레이어 1 = Player1
+                    cell.layer = 6;          // 레이어 1 = Player1
                 }
                 else
                 {
                     cell.tag = "Player2";    // 유니티 태그 관리자에서 사전 등록 필요
-                    cell.layer = 2;          // 레이어 2 = Player2
+                    cell.layer = 7;          // 레이어 2 = Player2
                 }
             }
         }

@@ -29,8 +29,9 @@ public class TestBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {   
+        GameObject other = collision.gameObject;
         // 다른 총알과 충돌
-        if (collision.collider.TryGetComponent<TestBullet>(out var otherBullet))
+        if (other.TryGetComponent<TestBullet>(out var otherBullet))
         {
             hp--;
 
@@ -43,6 +44,22 @@ public class TestBullet : MonoBehaviour
             // 반사 (속도 유지)
             rb.linearVelocity = lastVelocity.normalized * speed;
             return;
+        }
+        
+        // 셀과 충돌 시, 셀에게 "맞았다" 알림
+        if (other.TryGetComponent<CellController>(out var cell))
+        {
+            if (other.layer != gameObject.layer) // 적 팀만 반응
+            {
+                cell.HitByBullet(gameObject.layer); // 총알의 팀 전달
+                hp--;
+                if (hp <= 0)
+                {
+                    Destroy(gameObject);
+                    return;
+                }
+            }
+            return; // 같은 팀 셀은 무시
         }
         
         if (collision.contactCount == 0) return;
