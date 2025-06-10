@@ -8,6 +8,7 @@ public class TestCannon : MonoBehaviour
     [SerializeField] private Transform shooter;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Material material; // 고정 색상
+    [SerializeField] private Material bulletMaterial;
     [SerializeField] private float angleLimit = 50f;
     [SerializeField] private float duration = 2f;
     [SerializeField] private float bulletSpeed = 5f;
@@ -81,15 +82,15 @@ public class TestCannon : MonoBehaviour
         var sr = bullet.GetComponent<SpriteRenderer>();
         if (sr != null)
         {
-            sr.material = material;
+            sr.material = bulletMaterial;
         }
 
         // 꼬리색 설정
         var trail = bullet.GetComponent<TrailRenderer>();
         if (trail != null)
         {
-            trail.startColor = material.color;
-            trail.endColor = material.color;
+            trail.startColor = bulletMaterial.color;
+            trail.endColor = bulletMaterial.color;
         }
         
         var bulleto = bullet.GetComponent<TestBullet>();

@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786d9423f8a57d147b6b25301deb69aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Material: {fileID: 2100000, guid: 6f2754ea207774a4482589947a52cde8, type: 2}
-  player2Material: {fileID: 2100000, guid: 78382433b6ffda646938bc33a8c336ee, type: 2}
+  player1Material: {fileID: 2100000, guid: 473a6c3cc5982fc40810ea3498f93785, type: 2}
+  player2Material: {fileID: 2100000, guid: 46428433f0a7d9247ac1d96ee4882882, type: 2}
 --- !u!61 &-6662639343447747076
 BoxCollider2D:
   m_ObjectHideFlags: 0
