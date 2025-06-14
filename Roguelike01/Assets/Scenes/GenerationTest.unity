@@ -290,6 +290,12 @@ MonoBehaviour:
   endColor: {r: 0.94070077, g: 0.4044252, b: 0.4044252, a: 1}
   distanceToEnd: 10
   generatorPoint: {fileID: 1504290732}
+  selectDirection: 0
+  xOffset: 18
+  yOffset: 10
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!4 &1363597692
 Transform:
   m_ObjectHideFlags: 0

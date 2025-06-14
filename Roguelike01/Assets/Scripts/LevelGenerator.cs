@@ -17,6 +17,8 @@ public class LevelGenerator : MonoBehaviour
 
     public float xOffset = 18f, yOffset = 10f;
 
+    public LayerMask whatIsRoom;
+    
     private void Start()
     {
         Instantiate(layoutRoom, generatorPoint.position, generatorPoint.rotation).GetComponent<SpriteRenderer>().color = startColor;
@@ -30,6 +32,12 @@ public class LevelGenerator : MonoBehaviour
             
             selectDirection = (Direction)Random.Range(0, 4);
             MoveGenerationPoint();
+
+            // 겹치는 것이 있으면 겹치는 것이 없을 때 까지 반복한다.
+            while (Physics2D.OverlapCircle(generatorPoint.position, 2f, whatIsRoom))
+            {
+                MoveGenerationPoint();
+            }
             
         }
         
