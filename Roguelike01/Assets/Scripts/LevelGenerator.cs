@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -18,6 +19,10 @@ public class LevelGenerator : MonoBehaviour
     public float xOffset = 18f, yOffset = 10f;
 
     public LayerMask whatIsRoom;
+
+    private GameObject endRoom;
+
+    private List<GameObject> layoutRoomObjects = new List<GameObject>();
     
     private void Start()
     {
@@ -28,7 +33,19 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < distanceToEnd; i++)
         {
-            Instantiate(layoutRoom, generatorPoint.position, generatorPoint.rotation);
+            GameObject newRoom = Instantiate(layoutRoom, generatorPoint.position, generatorPoint.rotation);
+
+            layoutRoomObjects.Add(newRoom);
+
+            // 마지막 방을
+            if (i + 1 == distanceToEnd)
+            {
+                newRoom.GetComponent<SpriteRenderer>().color = endColor;
+                
+                layoutRoomObjects.RemoveAt(layoutRoomObjects.Count  - 1);
+                
+                endRoom = newRoom;
+            }
             
             selectDirection = (Direction)Random.Range(0, 4);
             MoveGenerationPoint();
@@ -41,10 +58,11 @@ public class LevelGenerator : MonoBehaviour
             
         }
         
-        Instantiate(layoutRoom, generatorPoint.position, generatorPoint.rotation).GetComponent<SpriteRenderer>().color = endColor;
+        // 마지막 방을 생성하고 색을 빨간색으로 한다.
+        /*Instantiate(layoutRoom, generatorPoint.position, generatorPoint.rotation).GetComponent<SpriteRenderer>().color = endColor;
 
         selectDirection = (Direction)Random.Range(0, 4);
-        MoveGenerationPoint();
+        MoveGenerationPoint();*/
     }
 
     private void Update()
