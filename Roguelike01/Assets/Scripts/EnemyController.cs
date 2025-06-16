@@ -32,11 +32,19 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
+    
+    private bool IsInCameraView()
+    {
+        Vector3 viewportPos = Camera.main.WorldToViewportPoint(transform.position);
+        return viewportPos.x >= 0 && viewportPos.x <= 1 &&
+               viewportPos.y >= 0 && viewportPos.y <= 1 &&
+               viewportPos.z > 0; // 카메라 앞에 있는지
+    }
 
     private void Update()
     {
         // 적이 화면 안에 있는지 확인
-        if (spriteRenderer.isVisible && PlayerController.instance.gameObject.activeInHierarchy)
+        if (IsInCameraView() && PlayerController.instance.gameObject.activeInHierarchy)
         {
             // 플레이어와의 거리 계산
             if(Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChasePlayer)
