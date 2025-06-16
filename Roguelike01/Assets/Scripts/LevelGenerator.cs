@@ -35,6 +35,9 @@ public class LevelGenerator : MonoBehaviour
 
     private List<GameObject> generatedOutlines = new List<GameObject>();
 
+    public RoomCenter centerStart, centerEnd;
+    public RoomCenter[] potentialCenter;
+
     private void Start()
     {
         Instantiate(layoutRoom, generatorPoint.position, generatorPoint.rotation).GetComponent<SpriteRenderer>().color =
@@ -85,14 +88,50 @@ public class LevelGenerator : MonoBehaviour
 
         selectDirection = (Direction)Random.Range(0, 4);
         MoveGenerationPoint();*/
+
+        foreach (GameObject outline in generatedOutlines)
+        {
+            bool generateCenter = true;
+            
+            // 시작점인지 
+            if (outline.transform.position == Vector3.zero)
+            {
+                Instantiate(centerStart, outline.transform.position, transform.rotation).theRoom = outline.GetComponent<Room>();
+
+                generateCenter = false;
+            }
+
+            if (outline.transform.position == endRoom.transform.position)
+            {
+                Instantiate(centerEnd, outline.transform.position, transform.rotation).theRoom = outline.GetComponent<Room>();
+
+                generateCenter = false;
+            }
+
+            // 코드의 순서상 처음과 마지막 지점이 아닐 때 만 생성한다.
+            if (generateCenter)
+            {
+                // 현재는 적이 있는 방과 적이 없는 방 2개
+                int centerSelect = Random.Range(0, potentialCenter.Length);
+
+                Instantiate(potentialCenter[centerSelect], outline.transform.position, transform.rotation).theRoom = outline.GetComponent<Room>();
+
+            }
+            
+            
+            
+        }
+        
     }
 
     private void Update()
     {
+        #if UNITY_EDITOR
         if (Input.GetKey(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        #endif
     }
 
     /// <summary>
