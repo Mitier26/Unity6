@@ -1119,7 +1119,7 @@ Transform:
   m_GameObject: {fileID: 7225989919775492820}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.5, z: 0}
+  m_LocalPosition: {x: 0, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1478,8 +1478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeWhenEntered: 1
-  openWhenEnemiesCleared: 0
   doors:
   - {fileID: 7225989919775492820}
   - {fileID: 1398807591008922532}
-  enemies: []
+  roomActive: 0
