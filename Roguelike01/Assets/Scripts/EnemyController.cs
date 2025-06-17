@@ -8,9 +8,26 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     
     public float moveSpeed;
-
+    
+    [Header("Chase Player")]
+    public bool shouldChasePlayer;
     public float rangeToChasePlayer;
     private Vector3 moveDirection;
+
+    [Header("Run Away")]
+    public bool shouldRunAway;
+    public float runawayRange;
+
+    [Header("Wandering")]
+    public bool shouldWander;
+    public float wanderLength, pauseLength;
+    private float wanderCounter, pauseCounter;
+    private Vector3 wanderDirection;
+
+    [Header("Patrolling")]
+    public bool shouldPatrol;
+    public Transform[] patrolPoints;
+    private int currentPatrolPoint;
 
     public int health = 150;
     
@@ -19,6 +36,7 @@ public class EnemyController : MonoBehaviour
 
     public bool shouldShoot;
     
+    [Header("Shooting")]
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float fireRate;
@@ -41,22 +59,86 @@ public class EnemyController : MonoBehaviour
                viewportPos.z > 0; // 카메라 앞에 있는지
     }
 
+    private void Start()
+    {
+        if (shouldWander)
+        {
+            pauseCounter = Random.Range(pauseLength * 0.75f, pauseLength * 1.25f);
+        }
+    }
+
     private void Update()
     {
         // 적이 화면 안에 있는지 확인
         if (IsInCameraView() && PlayerController.instance.gameObject.activeInHierarchy)
         {
+            moveDirection = Vector3.zero;
+            
             // 플레이어와의 거리 계산
-            if(Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChasePlayer)
+            if(Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChasePlayer && shouldChasePlayer)
             {
                 // 플레이어를 추적
-                moveDirection = (PlayerController.instance.transform.position - transform.position).normalized;
-                rb.linearVelocity = moveDirection * moveSpeed;
+                moveDirection = PlayerController.instance.transform.position - transform.position;
             }
             else
             {
-                rb.linearVelocity = Vector2.zero;
+                if (shouldWander)
+                {
+                    if (wanderCounter > 0)
+                    {
+                        wanderCounter -= Time.deltaTime;
+
+                        if (wanderCounter <= 0)
+                        {
+                            pauseCounter = Random.Range(pauseLength * 0.75f, pauseLength * 1.25f);
+                        }
+                    }
+
+                    if (pauseCounter > 0)
+                    {
+                        pauseCounter -= Time.deltaTime;
+
+                        if (pauseCounter <= 0)
+                        {
+                            wanderCounter = Random.Range(wanderLength * 0.75f, wanderLength * 1.25f);
+
+                            wanderDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
+                        }
+                    }
+                }
             }
+
+            if (shouldPatrol)
+            {
+                moveDirection = patrolPoints[currentPatrolPoint].position - transform.position;
+
+                if (Vector3.Distance(transform.position, patrolPoints[currentPatrolPoint].position) < 0.2f)
+                {
+                    currentPatrolPoint++;
+                    if (currentPatrolPoint >= patrolPoints.Length)
+                    {
+                        currentPatrolPoint = 0;
+                    }
+                }
+            }
+
+            // 도망가는 적
+            if (shouldRunAway && Vector3.Distance(transform.position, PlayerController.instance.transform.position) <
+                rangeToChasePlayer)
+            {
+                moveDirection = transform.position - PlayerController.instance.transform.position;
+            }
+            
+            
+            
+            /*else
+            {
+                rb.linearVelocity = Vector2.zero;
+            }*/
+            
+            moveDirection.Normalize();
+
+            rb.linearVelocity = moveDirection * moveSpeed;
             
             // 총알 발사
             if (shouldShoot && Vector3.Distance(transform.position, PlayerController.instance.transform.position) < shootRange)
