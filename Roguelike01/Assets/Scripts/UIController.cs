@@ -2,14 +2,16 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
     public static UIController instance;
 
-    public Slider HealthSlider;
-    public TextMeshProUGUI HealthText;
+    public Slider healthSlider;
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI coinText;
 
     public GameObject deathScreen;
 
@@ -72,10 +74,10 @@ public class UIController : MonoBehaviour
 
     public void UpdateHealthUI(int currentHealth, int maxHealth)
     {
-        HealthSlider.maxValue = maxHealth;
-        HealthSlider.value = currentHealth;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
 
-        HealthText.text = $"{currentHealth} / {maxHealth}";
+        healthText.text = $"{currentHealth} / {maxHealth}";
     }
 
     public void NewGame()
