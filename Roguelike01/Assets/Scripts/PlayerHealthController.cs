@@ -93,4 +93,14 @@ public class PlayerHealthController : MonoBehaviour
 
         UIController.instance.UpdateHealthUI(currentHealth, maxHealth);
     }
+
+    public void IncreaseMaxHealth(int amount)
+    {
+        maxHealth += amount;
+        currentHealth += amount;
+
+        UIController.instance.healthSlider.maxValue = maxHealth;
+        
+        UIController.instance.UpdateHealthUI(currentHealth, maxHealth);
+    }
 }

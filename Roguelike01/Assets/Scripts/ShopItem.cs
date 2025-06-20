@@ -7,9 +7,11 @@ public class ShopItem : MonoBehaviour
 
     private bool inBuyZone;
 
-    public bool isHealthRestore, IsHealthUpgrade, isWeapon;
+    public bool isHealthRestore, isHealthUpgrade, isWeapon;
 
     public int itemCost;
+
+    public int healthUpgradeAmount;
 
     private void Update()
     {
@@ -22,6 +24,11 @@ public class ShopItem : MonoBehaviour
                 if (isHealthRestore)
                 {
                     PlayerHealthController.instance.HealPlayer(PlayerHealthController.instance.maxHealth);
+                }
+
+                if (isHealthUpgrade)
+                {
+                    PlayerHealthController.instance.IncreaseMaxHealth(healthUpgradeAmount);
                 }
             }
         }
