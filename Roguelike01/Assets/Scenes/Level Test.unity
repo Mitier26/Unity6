@@ -2395,6 +2395,63 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &1201009725
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6190026417033041435, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
+      propertyPath: m_Name
+      value: Coin Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 7171003120092003581, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7171003120092003581, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7171003120092003581, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7171003120092003581, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7171003120092003581, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7171003120092003581, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7171003120092003581, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7171003120092003581, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7171003120092003581, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7171003120092003581, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
 --- !u!1 &1209182002
 GameObject:
   m_ObjectHideFlags: 0
@@ -4514,6 +4571,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7860843339061209337, guid: 93d6f44438a740c41b657da269ba4f9f, type: 3}
+      propertyPath: itemDropPercent
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860843339061209337, guid: 93d6f44438a740c41b657da269ba4f9f, type: 3}
+      propertyPath: itemsToDrop.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860843339061209337, guid: 93d6f44438a740c41b657da269ba4f9f, type: 3}
+      propertyPath: 'itemsToDrop.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6190026417033041435, guid: acc47a9902f0d774f8086ff936e8d2a8, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4676,6 +4745,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6327678229164253309, guid: 3d8e20491df1f0b42a77cad1e446bdce, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327678229164253309, guid: 3d8e20491df1f0b42a77cad1e446bdce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327678229164253309, guid: 3d8e20491df1f0b42a77cad1e446bdce, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8303765899966931559, guid: 3d8e20491df1f0b42a77cad1e446bdce, type: 3}
       propertyPath: m_Name
       value: UI Canvas
@@ -4760,3 +4841,4 @@ SceneRoots:
   - {fileID: 2505127672388266600}
   - {fileID: 4798243602544290980}
   - {fileID: 6331352999075344975}
+  - {fileID: 1201009725}

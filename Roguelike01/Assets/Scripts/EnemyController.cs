@@ -45,6 +45,10 @@ public class EnemyController : MonoBehaviour
     public float shootRange;
     public SpriteRenderer spriteRenderer;
     
+    public bool shouldDropItem;
+    public GameObject[] itemsToDrop;
+    public float itemDropPercent;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -187,6 +191,18 @@ public class EnemyController : MonoBehaviour
             int randomIndex = Random.Range(0, deathSplatters.Length);
             int randomRotation = Random.Range(0, 360);
             Instantiate(deathSplatters[randomIndex], transform.position, Quaternion.Euler(0, 0, randomRotation));
+            
+            // Drop item
+            if (shouldDropItem)
+            {
+                float randomValue = Random.Range(0f, 100f);
+                if (randomValue <= itemDropPercent)
+                {
+                    int randomItem = Random.Range(0, itemsToDrop.Length);
+                    Instantiate(itemsToDrop[randomItem], transform.position, Quaternion.identity);
+                }
+            }
+            
             Destroy(gameObject);
         }
     }
