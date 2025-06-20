@@ -30,6 +30,14 @@ public class ShopItem : MonoBehaviour
                 {
                     PlayerHealthController.instance.IncreaseMaxHealth(healthUpgradeAmount);
                 }
+                
+                gameObject.SetActive(false);
+                inBuyZone = false;
+                AudioManager.instance.PlaySfx(18);
+            }
+            else
+            {
+                AudioManager.instance.PlaySfx(19);
             }
         }
     }
