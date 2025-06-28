@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerUnlocked: 1
-  moveSpeed: 20
+  moveSpeed: 1
   jumpForce: 8
   groundCheckDistance: 1.4
   whatIsGround:
