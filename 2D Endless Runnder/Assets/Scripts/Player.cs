@@ -3,27 +3,45 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public bool runBegun;
-    [Header("Movement Settings")]
-    public float moveSpeed;
-    public float jumpForce;
+    private Rigidbody2D rb;
+    private Animator anim;
 
-    public Rigidbody2D rb;
+    public bool playerUnlocked = true;
+
+    [Header("Movement Settings")]
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpForce;
+
 
     [Header("Ground Check")]
     private bool isGrounded;
-    public float groundCheckDistance = 0.1f;
-    public LayerMask whatIsGround;
+    [SerializeField] private float groundCheckDistance;
+    [SerializeField] private LayerMask whatIsGround;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
 
     private void Update()
     {
-        if (runBegun)
+        AnimatorControllers();
+
+        if (playerUnlocked)
         {
             rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocityY);
         }
 
         CheckCollision();
         CheckInput();
+    }
+
+    private void AnimatorControllers()
+    {
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocity.x));
+        anim.SetFloat("yVelocity", rb.linearVelocity.y);
     }
 
     private void CheckCollision()
@@ -34,7 +52,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            runBegun = true;
+            playerUnlocked = true;
         }
 
         if (Input.GetButtonDown("Jump") && isGrounded)
