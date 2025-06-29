@@ -5871,9 +5871,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 34
+  field of view: 8.5
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5898,7 +5898,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.69, y: 6.3499994, z: -10}
+  m_LocalPosition: {x: 13.338889, y: 7.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5924,8 +5924,8 @@ MonoBehaviour:
   UpdateMethod: 2
   BlendUpdateMethod: 1
   LensModeOverride:
-    Enabled: 0
-    DefaultMode: 2
+    Enabled: 1
+    DefaultMode: 1
   DefaultBlend:
     Style: 1
     Time: 2
@@ -10057,7 +10057,7 @@ Transform:
   m_GameObject: {fileID: 920910886}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.53, y: 1.85, z: 0}
+  m_LocalPosition: {x: 2.53, y: 3.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10076,8 +10076,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerUnlocked: 0
-  moveSpeed: 1
-  jumpForce: 8
+  moveSpeed: 12
+  jumpForce: 18
   groundCheckDistance: 1.4
   whatIsGround:
     serializedVersion: 2
@@ -24323,8 +24323,8 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 34
-    OrthographicSize: 9
+    FieldOfView: 8.5
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -24351,7 +24351,7 @@ Transform:
   m_GameObject: {fileID: 2129213450}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.69, y: 6.3499994, z: -10}
+  m_LocalPosition: {x: 13.338889, y: 7.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
