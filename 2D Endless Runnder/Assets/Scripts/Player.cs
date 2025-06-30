@@ -35,6 +35,18 @@ public class Player : MonoBehaviour
     private bool isGrounded;
     private bool wallDirected;
     private bool ceillingDirected;
+    [HideInInspector] public bool ledgeDetected;
+
+    [Header("Ledge Info")]
+    [SerializeField] private Vector2 offset1;
+    [SerializeField] private Vector2 offset2;
+    
+    private Vector2 climbBegunPosition;
+    private Vector2 climbOverPosition;
+
+    private bool canGrabLedge = true;
+    private bool canClimb;
+
 
 
     void Start()
@@ -61,9 +73,40 @@ public class Player : MonoBehaviour
             canDoubleJump = true;
         }
 
+        CheckForLedge();
         CheckForSlide();
         CheckInput();
     }
+
+    private void CheckForLedge()
+    {
+        if (ledgeDetected && canGrabLedge)
+        {
+            canGrabLedge = false;
+
+            Vector2 ledgePosition = GetComponentInChildren<LedgeDetection>().transform.position;
+
+            climbBegunPosition = ledgePosition + offset1;
+            climbOverPosition = ledgePosition + offset2;
+
+            canClimb = true;
+        }
+
+        if(canClimb)
+        {
+            transform.position = climbBegunPosition;
+        }
+    }
+
+    private void LedgeClimbOver()
+    {
+        canClimb = false;
+        transform.position = climbOverPosition;
+        Invoke(nameof(AllowLedgeGrab), 0.1f);
+    }
+
+    private void AllowLedgeGrab() => canGrabLedge = true;
+    
 
     private void CheckForSlide()
     {
@@ -76,7 +119,7 @@ public class Player : MonoBehaviour
     private void Movement()
     {
         if (wallDirected) return;
-        
+
         if (isSliding)
         {
             rb.linearVelocity = new Vector2(slideSpeed, rb.linearVelocityY);
@@ -130,7 +173,7 @@ public class Player : MonoBehaviour
         }
     }
 
-        private void AnimatorControllers()
+    private void AnimatorControllers()
     {
         anim.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocity.x));
         anim.SetFloat("yVelocity", rb.linearVelocity.y);
@@ -138,9 +181,10 @@ public class Player : MonoBehaviour
         anim.SetBool("canDoubleJump", canDoubleJump);
         anim.SetBool("isGrounded", isGrounded);
         anim.SetBool("isSliding", isSliding);
+        anim.SetBool("canClimb", canClimb);
     }
 
-        private void CheckCollision()
+    private void CheckCollision()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
         ceillingDirected = Physics2D.Raycast(transform.position, Vector2.up, ceillingCheckDistance, whatIsGround);
