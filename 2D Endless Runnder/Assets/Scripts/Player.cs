@@ -27,12 +27,14 @@ public class Player : MonoBehaviour
 
     [Header("Collision Check")]
     [SerializeField] private float groundCheckDistance;
+    [SerializeField] private float ceillingCheckDistance;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private Vector2 wallCheckSize;
 
     [SerializeField] private LayerMask whatIsGround;
     private bool isGrounded;
     private bool wallDirected;
+    private bool ceillingDirected;
 
 
     void Start()
@@ -65,7 +67,7 @@ public class Player : MonoBehaviour
 
     private void CheckForSlide()
     {
-        if (slideTimeCounter < 0)
+        if (slideTimeCounter < 0 && !ceillingDirected)
         {
             isSliding = false;
         }
@@ -73,6 +75,8 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
+        if (wallDirected) return;
+        
         if (isSliding)
         {
             rb.linearVelocity = new Vector2(slideSpeed, rb.linearVelocityY);
@@ -83,22 +87,32 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void AnimatorControllers()
+    private void SlideButton()
     {
-        anim.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocity.x));
-        anim.SetFloat("yVelocity", rb.linearVelocity.y);
-
-        anim.SetBool("canDoubleJump", canDoubleJump);
-        anim.SetBool("isGrounded", isGrounded);
-        anim.SetBool("isSliding", isSliding);
+        if (rb.linearVelocityX != 0 && slideCooldownCounter < 0)
+        {
+            isSliding = true;
+            slideTimeCounter = slideTimer;
+            slideCooldownCounter = slideCooldown;
+        }
     }
 
-    private void CheckCollision()
+    private void JumpButton()
     {
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
-        wallDirected = Physics2D.BoxCast(wallCheck.position, wallCheckSize, 0f, Vector2.zero, 0f, whatIsGround);
+        if (isSliding) return;
+
+        if (isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
+        }
+        else if (canDoubleJump)
+        {
+            canDoubleJump = false;
+            rb.linearVelocity = new Vector2(rb.linearVelocityX, doubleJumpForce);
+        }
     }
-    private void CheckInput()
+
+        private void CheckInput()
     {
         if (Input.GetButtonDown("Fire1"))
         {
@@ -116,33 +130,28 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void SlideButton()
+        private void AnimatorControllers()
     {
-        if (rb.linearVelocityX != 0 && slideCooldownCounter < 0)
-        {
-            isSliding = true;
-            slideTimeCounter = slideTimer;
-            slideCooldownCounter = slideCooldown;
-        }
+        anim.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocity.x));
+        anim.SetFloat("yVelocity", rb.linearVelocity.y);
+
+        anim.SetBool("canDoubleJump", canDoubleJump);
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetBool("isSliding", isSliding);
     }
 
-    private void JumpButton()
+        private void CheckCollision()
     {
-        if (isGrounded)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
-        }
-        else if (canDoubleJump)
-        {
-            canDoubleJump = false;
-            rb.linearVelocity = new Vector2(rb.linearVelocityX, doubleJumpForce);
-        }
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+        ceillingDirected = Physics2D.Raycast(transform.position, Vector2.up, ceillingCheckDistance, whatIsGround);
+        wallDirected = Physics2D.BoxCast(wallCheck.position, wallCheckSize, 0f, Vector2.zero, 0f, whatIsGround);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, Vector2.down * groundCheckDistance);
+        Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y + ceillingCheckDistance));
         Gizmos.DrawWireCube(wallCheck.position, wallCheckSize);
     }
 }
