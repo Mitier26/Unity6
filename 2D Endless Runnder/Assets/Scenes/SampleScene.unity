@@ -10082,6 +10082,7 @@ MonoBehaviour:
   doubleJumpForce: 15
   slideSpeed: 20
   slideTimer: 0.4
+  slideCooldown: 1
   groundCheckDistance: 1.4
   wallCheck: {fileID: 1878305290}
   wallCheckSize: {x: 0.5, y: 2.25}
