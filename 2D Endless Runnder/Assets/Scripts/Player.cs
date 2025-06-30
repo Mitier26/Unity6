@@ -8,12 +8,19 @@ public class Player : MonoBehaviour
 
     public bool playerUnlocked = true;
 
-    [Header("Movement Settings")]
+
+    [Header("Movement Info")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForce;
 
     [SerializeField] private float doubleJumpForce;
     private bool canDoubleJump;
+
+        [Header("Slide Info")]
+    [SerializeField] private float slideSpeed;
+    [SerializeField] private float slideTimer;
+    private float slideTimeCounter;
+    private bool isSliding;
 
 
     [Header("Collision Check")]
@@ -34,11 +41,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        CheckCollision();
         AnimatorControllers();
+
+        slideTimeCounter -= Time.deltaTime;
 
         if (playerUnlocked && !wallDirected)
         {
-            rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocityY);
+            Movement();
         }
 
         if(isGrounded)
@@ -46,16 +56,38 @@ public class Player : MonoBehaviour
             canDoubleJump = true;
         }
 
-        CheckCollision();
+        CheckForSlide();
         CheckInput();
+    }
+
+    private void CheckForSlide()
+    {
+        if (slideTimeCounter < 0)
+        {
+            isSliding = false;
+        }
+    }
+
+    private void Movement()
+    {
+        if (isSliding)
+        {
+            rb.linearVelocity = new Vector2(slideSpeed, rb.linearVelocityY);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocityY);
+        }
     }
 
     private void AnimatorControllers()
     {
-        anim.SetBool("canDoubleJump", canDoubleJump);
-        anim.SetBool("isGrounded", isGrounded);
         anim.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocity.x));
         anim.SetFloat("yVelocity", rb.linearVelocity.y);
+
+        anim.SetBool("canDoubleJump", canDoubleJump);
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetBool("isSliding", isSliding);
     }
 
     private void CheckCollision()
@@ -74,6 +106,20 @@ public class Player : MonoBehaviour
         {
             JumpButton();
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            SlideButton();
+        }
+    }
+
+    private void SlideButton()
+    {
+        if (rb.linearVelocityX != 0)
+        {
+            isSliding = true;
+            slideTimeCounter = slideTimer;
+        }
     }
 
     private void JumpButton()
@@ -82,7 +128,8 @@ public class Player : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
         }
-        else if(canDoubleJump){
+        else if (canDoubleJump)
+        {
             canDoubleJump = false;
             rb.linearVelocity = new Vector2(rb.linearVelocityX, doubleJumpForce);
         }
