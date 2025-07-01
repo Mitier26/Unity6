@@ -9,8 +9,10 @@ public class Player : MonoBehaviour
     [Header("Speed Info")]
     [SerializeField] private float maxSpeed;
     [SerializeField] private float speedMultiplier;
+    private float defaultSpeed;
     [Space]
     [SerializeField] private float milestoneIncreaser;
+    private float defaultMilestoneIncreaser;
     private float speedMilestone;
 
     public bool playerUnlocked = true;
@@ -62,6 +64,8 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
 
         speedMilestone = milestoneIncreaser;
+        defaultSpeed = moveSpeed;
+        defaultMilestoneIncreaser = milestoneIncreaser;
     }
 
     private void Update()
@@ -89,9 +93,15 @@ public class Player : MonoBehaviour
         CheckInput();
     }
 
+    private void SpeedReset()
+    {
+        moveSpeed = defaultSpeed;
+        speedMilestone = defaultMilestoneIncreaser;
+    }
+
     private void SpeedController()
     {
-        if(moveSpeed == maxSpeed) return;
+        if (moveSpeed == maxSpeed) return;
 
         if (transform.position.x > speedMilestone)
         {
@@ -147,16 +157,21 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        if (wallDirected) return;
+        if (wallDirected)
+        {
+            Debug.Log("Wall Detected");
+            SpeedReset();
+            return;
+        }
 
         if (isSliding)
-        {
-            rb.linearVelocity = new Vector2(slideSpeed, rb.linearVelocityY);
-        }
-        else
-        {
-            rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocityY);
-        }
+            {
+                rb.linearVelocity = new Vector2(slideSpeed, rb.linearVelocityY);
+            }
+            else
+            {
+                rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocityY);
+            }
     }
 
     private void SlideButton()
