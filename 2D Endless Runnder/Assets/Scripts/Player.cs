@@ -123,6 +123,8 @@ public class Player : MonoBehaviour
         {
             canGrabLedge = false;
 
+            rb.linearVelocity = Vector2.zero;         // 벽을 오를 때 속도를 0으로 초기화
+
             Vector2 ledgePosition = GetComponentInChildren<LedgeDetection>().transform.position;
 
             climbBegunPosition = ledgePosition + offset1;
@@ -140,6 +142,7 @@ public class Player : MonoBehaviour
     private void LedgeClimbOver()
     {
         canClimb = false;
+        rb.gravityScale = 5.0f;
         transform.position = climbOverPosition;
         Invoke(nameof(AllowLedgeGrab), 0.1f);
     }
@@ -226,6 +229,16 @@ public class Player : MonoBehaviour
         anim.SetBool("isGrounded", isGrounded);
         anim.SetBool("isSliding", isSliding);
         anim.SetBool("canClimb", canClimb);
+
+        if (rb.linearVelocityY < -20)
+        {
+            anim.SetBool("canRoll", true);
+        }
+    }
+
+    private void RollAnimFinished()
+    {
+        anim.SetBool("canRoll", false);
     }
 
     private void CheckCollision()
