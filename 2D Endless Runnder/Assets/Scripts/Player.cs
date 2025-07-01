@@ -6,6 +6,13 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
+    [Header("Speed Info")]
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private float speedMultiplier;
+    [Space]
+    [SerializeField] private float milestoneIncreaser;
+    private float speedMilestone;
+
     public bool playerUnlocked = true;
 
 
@@ -53,6 +60,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        speedMilestone = milestoneIncreaser;
     }
 
     private void Update()
@@ -73,9 +82,29 @@ public class Player : MonoBehaviour
             canDoubleJump = true;
         }
 
+        SpeedController();
+
         CheckForLedge();
         CheckForSlide();
         CheckInput();
+    }
+
+    private void SpeedController()
+    {
+        if(moveSpeed == maxSpeed) return;
+
+        if (transform.position.x > speedMilestone)
+        {
+            speedMilestone = speedMilestone + milestoneIncreaser;
+
+            moveSpeed *= speedMultiplier;
+            milestoneIncreaser = milestoneIncreaser * speedMultiplier;
+
+            if (moveSpeed > maxSpeed)
+            {
+                moveSpeed = maxSpeed;
+            }
+        }
     }
 
     private void CheckForLedge()
@@ -92,7 +121,7 @@ public class Player : MonoBehaviour
             canClimb = true;
         }
 
-        if(canClimb)
+        if (canClimb)
         {
             transform.position = climbBegunPosition;
         }
