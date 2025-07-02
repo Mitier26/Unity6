@@ -6,6 +6,10 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
+    [Header("Knockback Info")]
+    [SerializeField] private Vector2 knockbackDir;
+    private bool isKnocked;
+
     [Header("Speed Info")]
     [SerializeField] private float maxSpeed;
     [SerializeField] private float speedMultiplier;
@@ -76,6 +80,8 @@ public class Player : MonoBehaviour
         slideTimeCounter -= Time.deltaTime;
         slideCooldownCounter -= Time.deltaTime;
 
+        if (isKnocked) return;
+
         if (playerUnlocked && !wallDirected)
         {
             Movement();
@@ -91,6 +97,19 @@ public class Player : MonoBehaviour
         CheckForLedge();
         CheckForSlide();
         CheckInput();
+    }
+
+    private void Knockback()
+    {
+        isKnocked = true;
+        rb.linearVelocity = knockbackDir;
+    }
+
+    private void CancelKnockback()
+    {
+        isKnocked = false;
+        rb.linearVelocity = Vector2.zero;
+        SpeedReset();
     }
 
     private void SpeedReset()
@@ -229,6 +248,7 @@ public class Player : MonoBehaviour
         anim.SetBool("isGrounded", isGrounded);
         anim.SetBool("isSliding", isSliding);
         anim.SetBool("canClimb", canClimb);
+        anim.SetBool("isKnocked", isKnocked);
 
         if (rb.linearVelocityY < -20)
         {
