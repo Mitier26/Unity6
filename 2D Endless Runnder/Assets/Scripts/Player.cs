@@ -9,13 +9,15 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
 
     private bool isDead;
+    public bool playerUnlocked = true;
 
     [Header("Knockback Info")]
     [SerializeField] private Vector2 knockbackDir;
     private bool isKnocked;
     private bool canBeKnocked = true;
 
-    [Header("Speed Info")]
+    [Header("Move Info")]
+    [SerializeField] private float moveSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float speedMultiplier;
     private float defaultSpeed;
@@ -24,17 +26,16 @@ public class Player : MonoBehaviour
     private float defaultMilestoneIncreaser;
     private float speedMilestone;
 
-    public bool playerUnlocked = true;
 
 
-    [Header("Movement Info")]
-    [SerializeField] private float moveSpeed;
+    [Header("Jump Info")]
     [SerializeField] private float jumpForce;
 
     [SerializeField] private float doubleJumpForce;
     private bool canDoubleJump;
 
-        [Header("Slide Info")]
+
+    [Header("Slide Info")]
     [SerializeField] private float slideSpeed;
     [SerializeField] private float slideTimer;
     [SerializeField] private float slideCooldown;
@@ -102,7 +103,7 @@ public class Player : MonoBehaviour
 
         if (playerUnlocked && !wallDirected)
         {
-            Movement();
+            SetupMovement();
         }
 
         if(isGrounded)
@@ -113,13 +114,14 @@ public class Player : MonoBehaviour
         SpeedController();
 
         CheckForLedge();
-        CheckForSlide();
+        CheckForSlideCancel();
         CheckInput();
     }
 
     private IEnumerator Die()
     {
         isDead = true;
+        canBeKnocked = false;
         rb.linearVelocity = knockbackDir;
         anim.SetBool("isDead", true);
 
@@ -226,7 +228,7 @@ public class Player : MonoBehaviour
     private void AllowLedgeGrab() => canGrabLedge = true;
     
 
-    private void CheckForSlide()
+    private void CheckForSlideCancel()
     {
         if (slideTimeCounter < 0 && !ceillingDirected)
         {
@@ -234,7 +236,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Movement()
+    private void SetupMovement()
     {
         if (wallDirected)
         {
