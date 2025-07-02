@@ -1,14 +1,17 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
+    private SpriteRenderer sr;
 
     [Header("Knockback Info")]
     [SerializeField] private Vector2 knockbackDir;
     private bool isKnocked;
+    private bool canBeKnocked = true;
 
     [Header("Speed Info")]
     [SerializeField] private float maxSpeed;
@@ -66,6 +69,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
 
         speedMilestone = milestoneIncreaser;
         defaultSpeed = moveSpeed;
@@ -99,8 +103,37 @@ public class Player : MonoBehaviour
         CheckInput();
     }
 
+    private IEnumerator Invincibility()
+    {
+        Color orignalColor = sr.color;
+        Color darkenColor = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
+
+        canBeKnocked = false;
+        sr.color = darkenColor;
+        yield return new WaitForSeconds(0.1f);
+        sr.color = orignalColor;
+        yield return new WaitForSeconds(0.1f);
+        sr.color = darkenColor;
+        yield return new WaitForSeconds(0.15f);
+        sr.color = orignalColor;
+        yield return new WaitForSeconds(0.15f);
+        sr.color = darkenColor;
+        yield return new WaitForSeconds(0.25f);
+        sr.color = orignalColor;
+        yield return new WaitForSeconds(0.25f);
+        sr.color = darkenColor;
+        yield return new WaitForSeconds(0.3f);
+        sr.color = orignalColor;
+
+        
+        canBeKnocked = true;
+    }
+
     private void Knockback()
     {
+        if(!canBeKnocked) return;
+
+        StartCoroutine(Invincibility());
         isKnocked = true;
         rb.linearVelocity = knockbackDir;
     }
