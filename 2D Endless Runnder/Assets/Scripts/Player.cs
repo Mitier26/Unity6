@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sr;
 
+    private bool isDead;
+
     [Header("Knockback Info")]
     [SerializeField] private Vector2 knockbackDir;
     private bool isKnocked;
@@ -84,6 +86,18 @@ public class Player : MonoBehaviour
         slideTimeCounter -= Time.deltaTime;
         slideCooldownCounter -= Time.deltaTime;
 
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            Knockback();
+        }
+        if (Input.GetKeyDown(KeyCode.D) && !isDead)
+        {
+            StartCoroutine(Die());
+        }
+
+
+        if (isDead) return;
+
         if (isKnocked) return;
 
         if (playerUnlocked && !wallDirected)
@@ -101,6 +115,16 @@ public class Player : MonoBehaviour
         CheckForLedge();
         CheckForSlide();
         CheckInput();
+    }
+
+    private IEnumerator Die()
+    {
+        isDead = true;
+        rb.linearVelocity = knockbackDir;
+        anim.SetBool("isDead", true);
+
+        yield return new WaitForSeconds(0.7f);
+        rb.linearVelocity = Vector2.zero;
     }
 
     private IEnumerator Invincibility()
@@ -125,7 +149,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         sr.color = orignalColor;
 
-        
+
         canBeKnocked = true;
     }
 
